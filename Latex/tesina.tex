@@ -1,0 +1,107 @@
+\documentclass[openany,italian]{book}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[Lenny]{fncychap}
+\usepackage{url}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+\usepackage{amsmath}
+\usepackage{mathtools,amsfonts,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usepackage{rotating}
+\usetikzlibrary{calc}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\usepackage{bbold}
+\usepackage{booktabs}
+\usepackage[arrowdel]{physics}
+\usepackage{cancel}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\makeatletter
+\newcommand{\lambdabar}{{\mathchoice
+  {\smash@bar\textfont\displaystyle{0.25}{1.2}\lambda}
+  {\smash@bar\textfont\textstyle{0.25}{1.2}\lambda}
+  {\smash@bar\scriptfont\scriptstyle{0.25}{1.2}\lambda}
+  {\smash@bar\scriptscriptfont\scriptscriptstyle{0.25}{1.2}\lambda}
+}}
+\newcommand{\smash@bar}[4]{%
+  \smash{\rlap{\raisebox{-#3\fontdimen5#10}{$\m@th#2\mkern#4mu\mathchar'26$}}}%
+}
+\makeatother
+
+\newcommand{\A}{\text{Å} \hspace{0.1mm}}
+
+\newcommand{\E}{È \hspace{0.1mm}}
+
+\newcommand\parallelo{/\!/}
+
+\setlength\parindent{0pt}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+\newlist{Properties}{enumerate}{2}
+\setlist[Properties]{label=(p.\arabic*),itemindent=*}
+
+\begin{document}
+
+\title{Appunti di Meccanica Quantistica Avanzata}
+\author{Marco Gorgone}
+
+\thispagestyle{empty}
+\begin{center}
+
+\begin{minipage}[c]{0.45\textwidth}
+\begin{flushleft}
+\includegraphics[width=0.8\textwidth]{build/logo_unict_orizzontale.png}
+\end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\begin{flushright}
+\includegraphics[width=\textwidth]{build/logo_dfa_orizzontale}
+\end{flushright}
+\end{minipage}\\
+\medskip
+\hbox to \textwidth{\hrulefill}
+
+\vfill
+\vfill
+
+
+\uppercase{\sc{ \Large{\textbf{Use of quantum algorithm to solve real gas}}}}\\
+
+\vfill
+\begin{center}
+    \large{Use of quantum algorithm to solve real gas}
+    
+    \vspace{0.5cm}
+    
+    \large{Marco Gorgone}    
+\end{center}
+
+\vfill
+\vfill
+\hbox to \textwidth{\hrulefill}
+{\sc anno 2023}
+\end{center}
+
+\tableofcontents
+
+%\include{introduzione/intro}
+
+\end{document}
