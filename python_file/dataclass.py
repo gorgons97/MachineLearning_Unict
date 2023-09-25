@@ -48,6 +48,51 @@ class StreetSignDataset(Dataset):
 
         return sample
     
+class StreetSignTest(Dataset):
+    """Face Landmarks dataset."""
+
+    def __init__(self, csv_file, root_dir, transform):
+        """
+        Arguments:
+            csv_file (string): Path to the csv file with annotations.
+            root_dir (string): Directory with all the images.
+            transform (callable, optional): Optional transform to be applied
+                on a sample.
+        """
+        self.landmarks_frame = pd.read_csv(csv_file)
+        self.root_dir = root_dir
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.landmarks_frame)
+
+    def __getitem__(self, idx):
+        if torch.is_tensor(idx):
+            idx = idx.tolist()
+
+        img_name = os.path.join(self.root_dir,
+                                self.landmarks_frame.iloc[idx, 0])
+        image = io.imread(img_name)
+
+        # Croppa le immagini con la funzione CROP da noi creata per lo scopo
+        top_w = self.landmarks_frame.iloc[idx, 1]
+        top_h = self.landmarks_frame.iloc[idx, 2]
+        bottom_w = self.landmarks_frame.iloc[idx, 3]
+        bottom_h = self.landmarks_frame.iloc[idx, 4]
+
+        crop = transforms.Compose([Crop[top_w, top_h, bottom_w, bottom_h]])
+        image = crop(image)
+        
+        # Carica le landmarks come array NumPy e assicurati che abbiano sempre dimensioni consistenti
+        landmarks = np.array(str(self.landmarks_frame.iloc[idx, 5]).split(), dtype=np.float32)
+
+        sample = {'image': image, 'landmarks': landmarks}
+
+        if self.transform:
+            sample = self.transform(sample)
+
+        return sample
+    
 class Rescale(object):
     """Rescale the image in a sample to a given size.
 
@@ -109,6 +154,35 @@ class RandomCrop(object):
                       left: left + new_w]
 
         return {'image': image, 'landmarks': landmarks}
+    
+class Crop(object):
+    """Crop randomly the image in a sample.
+
+    Args:
+        output_size (tuple or int): Desired output size. If int, square crop
+            is made.
+    """
+
+    def __init__(self, top_w, top_h, bottom_w, bottom_h):
+        assert isinstance(top_h, top_w, bottom_h, bottom_w, (int, tuple))
+        if isinstance(top_h, top_w, bottom_h, bottom_w, int):
+            self.top_h = top_h
+            self.top_w = top_w
+            self.bottom_h = bottom_h
+            self.bottom_w = bottom_w
+            self.height = abs(self.top_h - self.bottom_h)
+            self.width = abs(self.top_w - self.bottom_w)
+            if self.height < 32:
+                self.height = 32
+            if self.width < 32:
+                self.width = 32
+
+    def __call__(self, sample):
+        image = sample['image']
+        image = image[top: self.top_h + self.height,
+                      left: self.top_w + self.width]
+
+        return image
 
 
 class ToTensor(object):
