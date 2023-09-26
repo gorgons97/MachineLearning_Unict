@@ -74,14 +74,27 @@ class StreetSignTest(Dataset):
                                 self.landmarks_frame.iloc[idx, 0])
         image = io.imread(img_name)
 
-        # Croppa le immagini con la funzione CROP da noi creata per lo scopo
-        top_w = self.landmarks_frame.iloc[idx, 1]
-        top_h = self.landmarks_frame.iloc[idx, 2]
-        bottom_w = self.landmarks_frame.iloc[idx, 3]
-        bottom_h = self.landmarks_frame.iloc[idx, 4]
+        top_w_str = str(self.landmarks_frame.iloc[idx, 1]).strip()
+        top_h_str = str(self.landmarks_frame.iloc[idx, 2]).strip()
+        bottom_w_str = str(self.landmarks_frame.iloc[idx, 3]).strip()
+        bottom_h_str = str(self.landmarks_frame.iloc[idx, 4]).strip()
 
-        crop = transforms.Compose([Crop[top_w, top_h, bottom_w, bottom_h]])
-        image = crop(image)
+        top_w = int(top_w_str)
+        top_h = int(top_h_str)
+        bottom_w = int(bottom_w_str)
+        bottom_h = int(bottom_h_str)
+
+
+        # Suddivide la stringa in una lista di valori numerici utilizzando gli spazi come separatore
+        top_w = map(int, top_w_str.split())
+        top_h = map(int, top_h_str.split())
+        bottom_w = map(int, bottom_w_str.split())
+        bottom_h = map(int, bottom_h_str.split())
+
+
+        # Usare direttamente i valori delle coordinate
+                
+        image = image[top_h:bottom_h, top_w:bottom_w]
         
         # Carica le landmarks come array NumPy e assicurati che abbiano sempre dimensioni consistenti
         landmarks = np.array(str(self.landmarks_frame.iloc[idx, 5]).split(), dtype=np.float32)
