@@ -51,60 +51,43 @@ class StreetSignDataset(Dataset):
 class StreetSignTest(Dataset):
     """Face Landmarks dataset."""
 
-    def __init__(self, csv_file, root_dir, transform):
+    def __init__(self, txt_file, root_dir, transform=None):
         """
         Arguments:
-            csv_file (string): Path to the csv file with annotations.
+            txt_file (string): Path to the txt file with data.
             root_dir (string): Directory with all the images.
             transform (callable, optional): Optional transform to be applied
                 on a sample.
         """
-        self.landmarks_frame = pd.read_csv(csv_file)
+        with open(txt_file, 'r') as file:
+            lines = file.readlines()        
+        self.data = [line.strip().split() for line in lines]
         self.root_dir = root_dir
         self.transform = transform
 
-    def __len__(self):
-        return len(self.landmarks_frame)
-
     def __getitem__(self, idx):
-        if torch.is_tensor(idx):
-            idx = idx.tolist()
-
-        img_name = os.path.join(self.root_dir,
-                                self.landmarks_frame.iloc[idx, 0])
-        image = io.imread(img_name)
-
-        top_w_str = str(self.landmarks_frame.iloc[idx, 1]).strip()
-        top_h_str = str(self.landmarks_frame.iloc[idx, 2]).strip()
-        bottom_w_str = str(self.landmarks_frame.iloc[idx, 3]).strip()
-        bottom_h_str = str(self.landmarks_frame.iloc[idx, 4]).strip()
-
-        top_w = int(top_w_str)
-        top_h = int(top_h_str)
-        bottom_w = int(bottom_w_str)
-        bottom_h = int(bottom_h_str)
-
-
-        # Suddivide la stringa in una lista di valori numerici utilizzando gli spazi come separatore
-        top_w = map(int, top_w_str.split())
-        top_h = map(int, top_h_str.split())
-        bottom_w = map(int, bottom_w_str.split())
-        bottom_h = map(int, bottom_h_str.split())
-
-
-        # Usare direttamente i valori delle coordinate
-                
-        image = image[top_h:bottom_h, top_w:bottom_w]
+        img_info = self.data[idx]
+        img_name = os.path.join(self.root_dir, img_info[0]) 
         
-        # Carica le landmarks come array NumPy e assicurati che abbiano sempre dimensioni consistenti
-        landmarks = np.array(str(self.landmarks_frame.iloc[idx, 5]).split(), dtype=np.float32)
-
-        sample = {'image': image, 'landmarks': landmarks}
-
+        top_w = float(img_info[1])
+        top_h = float(img_info[2])
+        bottom_w = float(img_info[3])
+        bottom_h = float(img_info[4])   
+        
+        image = io.imread(img_name)
+        image = image[int(top_h):int(bottom_h), int(top_w):int(bottom_w)]   
+        
+        landmarks = np.array(img_info[5:], dtype=np.float32)    
+        sample = {'image': image, 'landmarks': landmarks}   
+        
         if self.transform:
-            sample = self.transform(sample)
-
+            sample = self.transform(sample) 
         return sample
+
+    def __len__(self):
+        return len(self.data)
+
+
     
 class Rescale(object):
     """Rescale the image in a sample to a given size.
