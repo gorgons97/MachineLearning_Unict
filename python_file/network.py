@@ -133,6 +133,7 @@ class MiniAlexNetV2(nn.Module):
             # Input: 16 x 32 x 32. Output: 16 x 16 x 16
             nn.ReLU(),
             
+            nn.BatchNorm2d(16), 
             # Conv2
             nn.Conv2d(16, 32, 5, padding=2),
             # Input: 16 x 16 x 16. Output: 32 x 16 x 16
@@ -140,16 +141,19 @@ class MiniAlexNetV2(nn.Module):
             # Input: 32 x 16 x 16. Output: 32 x 8 x 8
             nn.ReLU(),
             
+            nn.BatchNorm2d(32),
             # Conv3
             nn.Conv2d(32, 64, 3, padding=1),
             # Input: 32 x 8 x 8. Output: 64 x 8 x 8
             nn.ReLU(),
             
+            nn.BatchNorm2d(64),
             # Conv4
             nn.Conv2d(64, 128, 3, padding=1),
             # Input: 64 x 8 x 8. Output: 128 x 8 x 8
             nn.ReLU(),
             
+            nn.BatchNorm2d(128),            
             # Conv5
             nn.Conv2d(128, 256, 3, padding=1),
             # Input: 128 x 8 x 8. Output: 256 x 8 x 8
@@ -163,16 +167,19 @@ class MiniAlexNetV2(nn.Module):
             nn.Dropout(),
             # I layer di dropout vanno posizionati prima di FC6 e FC7
             
+            nn.BatchNorm1d(4096),  
             # FC6
             nn.Linear(4096, 2048),
             # Input: 256 * 4 * 4
             nn.ReLU(),
             nn.Dropout(),
             
+             nn.BatchNorm1d(2048),
             # FC7
             nn.Linear(2048, 1024),
             nn.ReLU(),
             
+            nn.BatchNorm1d(1024),
             # FC8
             nn.Linear(1024, out_classes)
         )
