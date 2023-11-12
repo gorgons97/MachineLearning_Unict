@@ -152,7 +152,7 @@ class RandomCrop(object):
         return {'image': image, 'landmarks': landmarks}
     
 class Crop(object):
-    """Crop randomly the image in a sample.
+    """Crop the image in a sample.
 
     Args:
         output_size (tuple or int): Desired output size. If int, square crop
