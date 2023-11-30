@@ -1,5 +1,3 @@
-import nbimporter
-import dataset_class as StreetSign
 from torch.utils.data.dataset import Dataset
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
