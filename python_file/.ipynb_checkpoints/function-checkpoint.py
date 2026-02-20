@@ -58,7 +58,7 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
                         optimizer.step( )
                         optimizer.zero_grad ( )
                     
-                    acc = accuracy_score(y.cpu().numpy(),output.max(1)[1].cpu().numpy())
+                    acc = accuracy_score(y.to(device),output.to(device).max(1)[1])
                     loss_meter.add(l.item(), n)
                     acc_meter.add(acc,n)
                     
@@ -70,7 +70,7 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
                 writer.add_scalar( 'loss/' + mode, loss_meter.value(), global_step=global_step)
                 writer.add_scalar( 'accuracy/' + mode, acc_meter.value(), global_step=global_step)
         #conserviamo i pesi del model Lo aLLa fine di un ciclo di training e test
-        torch.save(model.state_dict(), 'modelli/%s-%d.pth'%(exp_name,e+1))
+        torch.save(model.state_dict(), 'modelli\%s-%d.pth'%(exp_name,e+1))
     return model
 
 def test_classifier(model, loader):
@@ -83,8 +83,8 @@ def test_classifier(model, loader):
         y = y.squeeze()
         
         output = model(x)
-        preds = output.max(1)[1].cpu().numpy()
-        labs = y.cpu().numpy()
+        preds = output.to(device).max(1)[1].numpy()
+        labs = y.to(device).numpy()
         predictions.extend(list(preds))
         labels.extend(list(labs))
     return np.array(predictions), np.array(labels)
