@@ -14,8 +14,10 @@ from os import path
 import python_file.network as network
 import matplotlib.pyplot as plt
 
+from python_file.dirPath import modelliDir, logsDir
+
 def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
-                     lr=0.01, epochs=5, momentum=0.99, logdir='logs'):
+                     lr=0.01, epochs=5, momentum=0.99, logdir=logsDir):
     criterion = nn.CrossEntropyLoss()
     optimizer = SGD(model.parameters(), lr, momentum=momentum)
     #meters
@@ -70,7 +72,10 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
                 writer.add_scalar( 'loss/' + mode, loss_meter.value(), global_step=global_step)
                 writer.add_scalar( 'accuracy/' + mode, acc_meter.value(), global_step=global_step)
         #conserviamo i pesi del model Lo aLLa fine di un ciclo di training e test
-        torch.save(model.state_dict(), 'modelli/%s-%d.pth'%(exp_name,e+1))
+        #torch.save(model.state_dict(), modelliDir / '%s-%d.pth'%(exp_name,e+1))
+    fileName = '%s-%d.pth'%(exp_name,epochs)
+    saveName = modelliDir / fileName
+    torch.save(model.state_dict(), saveName)
     return model
 
 def test_classifier(model, loader):
