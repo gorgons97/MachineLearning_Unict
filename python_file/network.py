@@ -14,7 +14,7 @@ from os import path
 import matplotlib.pyplot as plt
 
 np.random.seed(1328)
-torch.random.manual_seed(1328);
+torch.random.manual_seed(1328)
 
 class AverageValueMeter():
     def __init__(self):
@@ -64,7 +64,7 @@ class LeNetColor(nn.Module):
         return x
     
 class MiniAlexNet(nn.Module):
-    def __init__(self, input_channels=3, out_classes=100):
+    def __init__(self, input_channels=3, out_classes=4):
         super(MiniAlexNet, self).__init__()
         #ridefiniamo il modello utilizzando i moduli sequential.
         #ne definiamo due: un "feature extractor", che estrae le feature map.
@@ -116,7 +116,7 @@ class MiniAlexNet(nn.Module):
 
 
 class MiniAlexNetV2(nn.Module):
-    def __init__(self, input_channels=3, out_classes=100):
+    def __init__(self, input_channels=3, out_classes=4):
         super(MiniAlexNetV2, self).__init__()
         
         # Definiamo il modello utilizzando moduli Sequential.
@@ -190,7 +190,7 @@ class MiniAlexNetV2(nn.Module):
 
 
 class MiniAlexNetV3(nn.Module):
-   def __init__(self, input_channels=3, out_classes=100):
+   def __init__(self, input_channels=3, out_classes=4):
       super(MiniAlexNetV3, self).__init__()
       #ridefiniamo il modello utilizzando i moduli sequential.
       #ne definiamo due: un "feature extractor", che estrae le feature maps
@@ -242,7 +242,7 @@ class MiniAlexNetV3(nn.Module):
       return x
    
 class MiniAlexNetV4(nn.Module):
-   def __init__(self, input_channels=3, out_classes=100):
+   def __init__(self, input_channels=3, out_classes=4):
       super(MiniAlexNetV4, self).__init__()
       #ridefiniamo il modello utilizzando i moduli sequential.
       #ne definiamo due: un "feature extractor", che estrae le feature maps

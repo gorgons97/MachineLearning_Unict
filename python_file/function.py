@@ -43,7 +43,7 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
             with torch.set_grad_enabled(mode=='train'): #abiLitiamo i gradienti SOLO in training
                 for i, batch in enumerate(loader[mode]):
                     x = list(batch.values())[0].to(device).float()
-                    y = list(batch.values())[1].to(device).long()  # Assicurati che y sia di tipo Long
+                    y = list(batch.values())[1].to(device).long()  
                     y = y.squeeze()
 
                     #print(y)  # Stampa il tensore target y per il controllo
