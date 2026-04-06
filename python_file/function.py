@@ -35,6 +35,8 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
     }
     #iniziaLizziamo iL global step
     global_step = 0
+    fileName = '%s-%d.pth'%(exp_name,epochs)
+    saveName = modelliDir / fileName
     for e in range(epochs):
         #iteriamo tra due modalità: train e test
         for mode in ['train' , 'test']:
@@ -73,8 +75,6 @@ def train_classifier(model, train_loader, test_loader, exp_name='experiment' ,
                 writer.add_scalar( 'accuracy/' + mode, acc_meter.value(), global_step=global_step)
         #conserviamo i pesi del model Lo aLLa fine di un ciclo di training e test
         #torch.save(model.state_dict(), modelliDir / '%s-%d.pth'%(exp_name,e+1))
-    fileName = '%s-%d.pth'%(exp_name,epochs)
-    saveName = modelliDir / fileName
     torch.save(model.state_dict(), saveName)
     return model
 
