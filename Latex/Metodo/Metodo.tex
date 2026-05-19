@@ -1,0 +1,97 @@
+\section{Metodo}
+
+Verrà esaminato ora l'approccio eseguito per risolvere la problematica: il compito è configurato come un problema di classificazione con tre categorie (indicazione, avvertimento, divieto).
+
+\subsection{Rete Utilizzata}
+
+In merito a ciò, dopo aver condotto alcuni esperimenti, i quali verranno descritti più dettagliatamente nel capitolo successivo, si è optato per l'implementazione di una Convolutional Neural Network (CNN) ispirata ad AlexNet. A questa architettura, è stata applicata sia la tecnica della batch normalization che il dropout al fine di prevenire problemi di overflow durante il calcolo delle funzioni di attivazione e problemi di overfitting. Da adesso in poi il modello verrà nominato come \textbf{MiniAlexNetV2}. Nella figura 3 è possibile osservare una rappresentazione schematica della rete utilizzata.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Metodo/Rete1.png}
+\end{figure}
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[scale=0.8]{Metodo/Rete2.png}
+    \caption{schema rete \textbf{MiniAlexNetV2}}
+    \label{fig:enter-label}
+\end{figure}
+
+Negli input della rete, sono state adottate le cosiddette "regole generali approssimative": i batch di dati sono stati configurati con dimensioni di 1024 per la fase di addestramento e di 2048 per le fasi di convalida e test, implementando MaxPooling con dimensione 2 e uno stride di dimensione 1. Come funzione di attivazione, è stata impiegata l'Unità Lineare Rettificata, nota come ReLU, la quale restituisce il valore stesso della combinazione se i dati sono positivi, mentre annulla quelli negativi. Tutti questi parametri sono formalmente espressi mediante un'apposita equazione matematica \eqref{1}:
+
+\begin{equation}
+    f(x) = \begin{cases}
+                0 & \text{se } x < 0 \\
+                x & \text{se } x > 0
+           \end{cases}
+\label{1}
+\end{equation}
+
+\subsection{Funzione di Loss}
+La funzione di Loss utilizzata è la \textit{Cross Entropy Loss} descritta in \eqref{2}:
+
+\begin{equation}
+    \text{Cross Entropy Loss} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{C} y_{ij} \cdot \log(\hat{y}_{ij})
+\label{2}
+\end{equation}
+
+dove:
+\begin{align*}
+    N & \text{ è il numero di campioni,} \\
+    C & \text{ è il numero di classi,} \\
+    p_{ij} & \text{ è la vera probabilità della classe } j \text{ per il campione } i, \\
+    \hat{p}_{ij} & \text{ è la probabilità predetta della classe } j \text{ per il campione } i.
+\end{align*}
+
+La formula della cross entropy loss, la quale consente il confronto tra due distribuzioni di probabilità, risulta fondamentale in quanto la rete \textbf{MiniAlexNetV2} fornisce per ciascuna immagine una probabilità associata all'appartenenza a una specifica classe. È pertanto necessario effettuare un confronto tra questa distribuzione di probabilità predetta e la distribuzione "reale", la quale assume un valore diverso da zero solamente per la classe alla quale l'immagine in input appartiene.
+
+In termini formali, la funzione di Loss che è stata utilizzata presenta una leggera variazione rispetto a quella precedentemente menzionata. L'equazione adottata è la \eqref{3}:
+
+\begin{equation}
+    \text{Cross Entropy Loss} = -\frac{1}{N}\sum_{i}^{N} \left( y_i \cdot \log(\hat{y}_i) + (1 - y_i) \cdot \log(1 - \hat{y}_i) \right)
+\label{3}
+\end{equation}
+
+dove:
+\begin{align*}
+    N & \text{ è il numero di classi,} \\
+    y_i & \text{ è la vera probabilità della classe } i, \\
+    \hat{y}_i & \text{ è la probabilità predetta della classe } i.
+\end{align*}
+
+\subsection{Valutazione}
+La validità delle previsioni è stata valutata attraverso il parametro di accuratezza. Tale parametro è stato derivato definendo una matrice di confusione elementare, come indicato nella tabella \ref{tab:matrice-confusione}:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{2}{c|}{\cellcolor{gray!20}\textbf{Realtà}} \\ \cline{2-3}
+ & \cellcolor{gray!20}\textbf{Positivo} & \cellcolor{gray!20}\textbf{Negativo} \\ \cline{1-3}
+\cellcolor{gray!20}\textbf{Previsioni Positivo} & \cellcolor{green!20}Vero Positivo & \cellcolor{red!20}Falso Positivo \\ \cline{1-3}
+\cellcolor{gray!20}\textbf{Previsioni Negativo} & \cellcolor{red!20}Falso Negativo & \cellcolor{green!20}Vero Negativo \\ \cline{1-3}
+\end{tabular}
+\caption{Matrice di Confusione}
+\label{tab:matrice-confusione}
+\end{table}
+
+\vspace{+1truecm}
+
+Da questa analisi, è possibile definire l'accuratezza del modello come il rapporto tra il numero di previsioni corrette e il numero totale di previsioni, come indicato nell'equazione \eqref{4}:
+\begin{equation}
+\text{Accuracy} = \frac{\text{Numero di Previsioni Corrette}}{\text{Numero Totale di Previsioni}}
+\label{4}
+\end{equation} 
+\newline
+
+Questo parametro fornisce una misura della corretta classificazione effettuata dal modello rispetto al numero complessivo di previsioni eseguite. 
+\newline 
+Oltre all'accuratezza, è stata elaborata anche la curva REC, una curva grafica che illustra le prestazioni di un modello di classificazione al variare della soglia di decisione.
+
+
+
+
+
+

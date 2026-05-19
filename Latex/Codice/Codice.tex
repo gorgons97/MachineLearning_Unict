@@ -1,0 +1,20 @@
+\section{Codice}
+Il codice da noi utilizzato è stato suddiviso e strutturato in modo tale da avere all'interno della sotto cartella "python\_file" i seguenti file:
+\begin{itemize}
+   \item Il file denominato \textit{Dataclass} che definisce le classi e le trasformazioni per la manipolazione di dataset di segnali stradali. Include classi per il training (\textit{StreetSignDataset}) e il testing (\textit{StreetSignTest}), insieme a trasformazioni come il ridimensionamento (\textit{Rescale}), il ritaglio casuale (\textit{RandomCrop}), il ritaglio specifico (\textit{Crop}), e la conversione in tensori (\textit{ToTensor}). La funzione \textit{show\_landmarks\_batch} è un'utilità per visualizzare batch di immagini con landmarks. In sintesi, il codice fornisce un'infrastruttura per preparare dati e modelli per immagini di segnali stradali.   
+   
+   \item Il file denominato \textit{Function} che fornisce funzioni compatte per l'addestramento e il test di un classificatore. La prima parte del codice addestra un modello utilizzando SGD e cross-entropy, con TensorBoard e salvataggio dei pesi. La seconda parte valuta le prestazioni del modello su un set di dati di test, restituendo predizioni e etichette reali. In sintesi il flusso principale configura parametri, carica il modello e itera attraverso le epoche e le fasi di training/test, registrando i risultati su TensorBoard e salvando i pesi del modello.
+   
+   \item  Il file denominato\textit{Network} implementa l'architettura delle reti neurali testate, con variazioni nelle architetture e nell'utilizzo di tecniche come Batch Normalization e Dropout per migliorare le prestazioni e la generalizzazione del modello. 
+\end{itemize}
+
+Infine sono stati creati dei notebook con Jupiter in cui è stata usata la nostra struttura dati, insieme alle funzioni di test e training per poter allenare il nostro modello, convertendo prima le immagini da inserire nella struttura dati e modificandole con le opportune trasformazioni. I notebook in questione sono:  
+\begin{itemize}
+
+   \item Il notebook \textit{Train} si occupa dell'allenamento delle reti \textit{AlexNet}, \textit{MiniAlexNet} e \textit{MiniAlexNetV2} che si occupano di convertire le immagini in tensori che possano allenare la rete, e che infine ritornano il valore di accurancy per ogni tipo di rete testata.
+   
+   \item Ed infine il modulo \textit{Result} che opera caricando i tre modello pre-allenati. Successivamente, utilizza l'URL di un'immagine o un'immagine locale per eseguire una previsione sulla categoria del segnale stradale presente nell'immagine. La categoria predetta viene successivamente stampata, comprendendo classi come indicatory, prohibitory, warning, oppure segnalando ERROR 404 NOT FOUND in caso di errore nella previsione.
+\end{itemize}
+
+
+ 

@@ -1,0 +1,58 @@
+\section{Analisi}
+Inizialmente sono state condotte una serie di analisi allo scopo principale di identificare il modello che ha restituito i risultati più promettenti. Successivamente, ci si è dedicati all'indagine delle configurazioni ottimali del momento, al fine di massimizzare l'accuratezza.
+\subsection{Scelta del Modello}
+Per identificare il modello ottimale, sono stati condotti diversi approfondimenti. Per il primo è stata impiegata una rete nota come \textbf{AlexNet}, successivamente una rete basata su AlexNet, denominata \textbf{MiniAlexNet}, ed infine, dover aver introdotto sia layer di Dropout che layer di Batch Normalization, la rete versione \textbf{MiniAlexNetV2}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Analisi/ConfrontoReti.png}
+    \caption{Comparazione tra curve accuracy}
+    \label{ConfrontoAccuracy}
+\end{figure}
+
+L'esame della Figura  \ref{ConfrontoAccuracy} evidenzia in modo netto come la rete MiniAlexNetV2 raggiunga un'accuratezza notevolmente superiore rispetto alla MiniAlexNet, che mostra, al contrario, un comportamento oscillante. Sebbene la AlexNet presenti un andamento migliore rispetto alla MiniAlexNet, essa rimane comunque inferiore alla MiniAlexNetV2. Pertanto, dal punto di vista dell'accuratezza, la rete MiniAlexNetV2 emerge come la più efficace.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Analisi/ConfrontoLoss.png}
+    \caption{Comparazione tra curve loss}
+    \label{ConfrontoLoss}
+\end{figure}
+
+Dall'analisi della Figura \ref{ConfrontoLoss}, emergono notevoli differenze tra le reti MiniAlexNetV2, MiniAlexNet, e AlexNet, le quali sono state addestrate rispettivamente per 200 epoche durante la fase di training. La rete MiniAlexNetV2, mostra valori di convergenza durante la fase di training significativamente inferiori rispetto alle altre due reti.
+
+Tuttavia, durante la fase di test, la curva della MiniAlexNetV2 manifesta inizialmente un picco, indicativo di una probabile fase di overfitting nelle prime epoche, per poi stabilizzarsi su valori di loss più contenuti. Questo comportamento sottolinea la complessità dell'addestramento e la necessità di valutare attentamente le dinamiche della loss durante l'intero processo di addestramento e test. \\
+Questi risultati hanno indotto la concentrazione degli sforzi sull'ulteriore sviluppo della rete MiniAlexNetV2. \\
+I parametri utilizzati per queste prove sono stati:
+
+\begin{itemize}
+  \item Tasso di apprendimento (\textit{Learning Rate}): 0.0001
+  \item Momento (\textit{Momentum}): 0.6
+\end{itemize}
+
+\newpage 
+
+ \subsection{Calibrazione del Momento}
+Una volta definito il modello, sono stati dedicati sforzi all'ottimizzazione del momento al fine di calibrarlo al meglio. Per valutare l'efficacia di diverse opzioni di momento, si è limitati a considerare quale tra i valori proposti conducesse a un aumento dell'accuratezza congiuntamente a una convergenza della loss verso valori inferiori.
+
+I dati sull'accuratezza e sulla loss durante l'addestramento del precedente esperimento con MiniAlexNetV2 sono stati conservati. Successivamente, la rete è stata nuovamente addestrata utilizzando un valore di momento pari a 0.7.
+I risultati di questo test sono illustrati nelle Figura \ref{ConfrontoCurve}. \\ Come evidenziato, il modello presenta un'accuratezza leggermente superiore durante la fase di addestramento e test quando il momento è impostato a 0.6. Le curve di loss convergono a valori leggermente inferiori e seguono un andamento poco più regolare.
+
+Sulla base di tali risultati, si è proceduto mantenendo un valore di momento pari a 0.6.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Analisi/ConfrontoAccuracySmooth0.7.png}
+    \includegraphics[scale=0.7]{Analisi/ConfrontoLossSmooth0.7.png}
+    \caption{Comparazione tra curve accuracy sopra, tra curve loss sotto.}
+    \label{ConfrontoCurve}
+\end{figure}
+\newpage
+
+\subsection{Rec Curve}
+Trovati quindi modello e momento, come mostrato prima, è stato reiterato il processo di training, allenando la rete per altre 200 e calcolando la Rec Curve, riportata in Figura \ref{Rec}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Analisi/RecCurve.jpg}
+    \caption{REC curve ottenuta per il modello ottimizzato: \textit{Learning Rate}=0.0001, Momentum=0.6}
+    \label{Rec}
+\end{figure}

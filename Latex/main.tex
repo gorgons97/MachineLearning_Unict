@@ -1,4 +1,4 @@
-\documentclass[openany,italian]{book}
+\documentclass[openany,italian,12pt]{article}
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -9,6 +9,13 @@
 \usepackage[version=4]{mhchem}
 \usepackage{amsmath}
 \usepackage{mathtools,amsfonts,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{biblatex}
+\usepackage{arydshln} % Pacchetto per le linee tratteggiate
+\renewcommand{\arraystretch}{1.5}
+\usepackage[table]{xcolor} % Pacchetto per colorare celle
+\renewcommand{\arraystretch}{1.5}
 \usepackage{tikz}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{arrows.meta}
@@ -31,6 +38,8 @@
     linkcolor=black,
     urlcolor=black
 }
+
+\usepackage{import}
 
 \makeatletter
 \newcommand{\lambdabar}{{\mathchoice
@@ -59,35 +68,27 @@
 
 \begin{document}
 
-\title{Appunti di Meccanica Quantistica Avanzata}
-\author{Marco Gorgone}
-
 \thispagestyle{empty}
 \begin{center}
 
-\begin{minipage}[c]{0.45\textwidth}
-\begin{flushleft}
-\includegraphics[width=0.8\textwidth]{build/logo_unict_orizzontale.png}
-\end{flushleft}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.45\textwidth}
-\begin{flushright}
-\includegraphics[width=\textwidth]{build/logo_dfa_orizzontale}
-\end{flushright}
-\end{minipage}\\
+
+\uppercase{\sc{ \Large{\textbf{Università degli studi di Torino}}}}\\
+\sc{ \large{\textbf{Dipartimento di Fisica}}}\\
+
 \medskip
 \hbox to \textwidth{\hrulefill}
+\vfill
+\uppercase{\sc{ \Large{\textbf{Report }}}}\\
+\uppercase{\sc{ \Large{\textbf{Reti Neurali}}}}\\
 
 \vfill
-\vfill
 
 
-\uppercase{\sc{ \Large{\textbf{Use of quantum algorithm to solve real gas}}}}\\
+\uppercase{\sc{ \Large{Riconoscimento Tipologia Segnali stradali}}}\\
 
 \vfill
 \begin{center}
-    \large{Use of quantum algorithm to solve real gas}
+    \large{A cura di}
     
     \vspace{0.5cm}
     
@@ -97,11 +98,26 @@
 \vfill
 \vfill
 \hbox to \textwidth{\hrulefill}
-{\sc anno 2023}
+{\sc anno 2025/2026}
 \end{center}
+
+\newpage
 
 \tableofcontents
 
-%\include{introduzione/intro}
+\newpage
 
+\include{introduzione/intro}
+
+\include{Metodo/Metodo}
+
+\include{Analisi/Analisi}
+
+\include{Codice/Codice}
+
+\include{Uso/Uso}
+
+\include{Conclusione/Conclusione}
+
+\include{Referenze/Referenze}
 \end{document}
