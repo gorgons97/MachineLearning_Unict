@@ -12,4 +12,5 @@
 \contentsline {subsection}{\numberline {3.3}Rec Curve}{12}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Codice}{13}{section.4}%
 \contentsline {section}{\numberline {5}Uso quotidiano}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Divisione in sottoimmagini}{14}{subsection.5.1}%
 \contentsline {section}{\numberline {6}Conclusione}{15}{section.6}%

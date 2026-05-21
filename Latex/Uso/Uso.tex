@@ -1,2 +1,10 @@
 \section{Uso quotidiano}
-Nel notebook \textit{Result} è presente una seconda parte dopo il titolo \textbf{Uso Quotidiano} dove si utilizza la rete MiniAlexNetV2 con immagini reali (immagini prese dalla raccolta di test), in cui non si ha solo l'immagine del segnale ma si punta a ricnoscere il segnale in un contesto cidattino, per fare ciò ci si è posti il problema di come isolare la singola immagine del segnale stradale rispetto al contesto, per eseguire questa ricerca si sono usati 2 processi, il primo 
+Nel notebook \textit{Result} è presente una seconda parte dopo il titolo \textbf{Uso Quotidiano} dove si utilizza la rete MiniAlexNetV2 con immagini reali (immagini prese dalla raccolta di test), in cui non si ha solo l'immagine del segnale ma si punta a ricnoscere il segnale in un contesto cidattino, per fare ciò ci si è posti il problema di come isolare la singola immagine del segnale stradale rispetto al contesto, per eseguire questa ricerca si sono usati 2 processi.
+\begin{itemize}
+    \item \textbf{Divisione in sottoimmagini:} Consiste nel suddividere l'immagine in tante piccole sotto immagini e poi per ognuna verificare cosa essa sia;
+    \item \textbf{Uso di Yolo:} Uso di uno strumento che permette di ritagliare l'immagine per poter già verificare le sezioni migliori dell'immagini in cui sono presenti delle porzioni di immagini che sono candidabili per essere catalogate;
+\end{itemize}
+
+\subsection{Divisione in sottoimmagini}
+L'uso dell'immagine in sottoimmagini all'inizio è sembrata l'idea migliore perchè era di facile operatività e di facile utilizzo, ma ha presentato scarsi risultati sia in terminni di velocità sia in termini di affidabilità.
+Il motivo di questi scarsi risultati sono, per la velocità il fatto che l'immagine andrebbe tagliata pezzo per pezzo e questo causa una certa lentezza di calcolo, mentre per quanto riguarda il problema dei risultati esso è dovuto al fatto che il dataset non è abbastanza grande per poter analizzare tutti i casi possibili, se si avesse usato un dataset più grande possibilmente si poteva ottenere un risultato migliore.
