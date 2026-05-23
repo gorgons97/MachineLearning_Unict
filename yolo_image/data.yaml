@@ -1,0 +1,8 @@
+# data.yaml
+path: /home/marco/progetti/MachineLearning_Unict/yolo_image    # root del dataset che hai creato
+train: images/train
+val: images/val                         # se non hai val, puoi duplicare train
+
+nc: 1
+names:
+  0: traffic_sign
