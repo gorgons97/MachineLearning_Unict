@@ -1,10 +1,24 @@
-\section{Uso quotidiano}
-Nel notebook \textit{Result} è presente una seconda parte dopo il titolo \textbf{Uso Quotidiano} dove si utilizza la rete MiniAlexNetV2 con immagini reali (immagini prese dalla raccolta di test), in cui non si ha solo l'immagine del segnale ma si punta a ricnoscere il segnale in un contesto cidattino, per fare ciò ci si è posti il problema di come isolare la singola immagine del segnale stradale rispetto al contesto, per eseguire questa ricerca si sono usati 2 processi.
+\section{Caso Reale}
+Nel notebook \textit{test\_reale} è presente la parte di codice relativa al test della rete neurale in un contesto urbano. Se, per esempio, dotassimo un veicolo di una telecamera per riprendere la strada in tempo reale, potremmo scattare delle fotografie durante il tragitto, verificare la presenza di segnali stradali e inviare l'output al sistema di bordo o al guidatore. Per fare ciò, ci si è posti il problema di come isolare la singola immagine del segnale rispetto al contesto; per eseguire questa ricerca si sono usati due processi:
+
 \begin{itemize}
-    \item \textbf{Divisione in sottoimmagini:} Consiste nel suddividere l'immagine in tante piccole sotto immagini e poi per ognuna verificare cosa essa sia;
-    \item \textbf{Uso di Yolo:} Uso di uno strumento che permette di ritagliare l'immagine per poter già verificare le sezioni migliori dell'immagini in cui sono presenti delle porzioni di immagini che sono candidabili per essere catalogate;
+    \item \textbf{Divisione in sottoimmagini:} consiste nel suddividere l'immagine in numerose porzioni e verificare per ognuna di esse il contenuto;
+    \item \textbf{Uso di YOLO:} utilizzo di uno strumento di object detection che permette di individuare le regioni d'interesse (ROI) all'interno delle immagini, identificando le porzioni candidate alla classificazione;
 \end{itemize}
 
-\subsection{Divisione in sottoimmagini}
-L'uso dell'immagine in sottoimmagini all'inizio è sembrata l'idea migliore perchè era di facile operatività e di facile utilizzo, ma ha presentato scarsi risultati sia in terminni di velocità sia in termini di affidabilità.
-Il motivo di questi scarsi risultati sono, per la velocità il fatto che l'immagine andrebbe tagliata pezzo per pezzo e questo causa una certa lentezza di calcolo, mentre per quanto riguarda il problema dei risultati esso è dovuto al fatto che il dataset non è abbastanza grande per poter analizzare tutti i casi possibili, se si avesse usato un dataset più grande possibilmente si poteva ottenere un risultato migliore.
+\subsection{Divisione}
+L'uso della divisione in sottoimmagini è sembrata inizialmente la soluzione più semplice, ma ha presentato scarsi risultati sia in termini di prestazioni che di affidabilità.
+Il motivo risiede nella necessità di processare sequenzialmente ogni ritaglio, causando lentezza di calcolo. Inoltre, l'accuratezza è limitata dal fatto che il dataset di addestramento non copre tutte le possibili variazioni del contesto circostante.
+
+\subsection{YOLO}
+Per ovviare ai limiti della suddivisione manuale, nel notebook \textit{test\_reale} è stato implementato l'uso dell'algoritmo \textbf{YOLO} (You Only Look Once). A differenza dell'approccio precedente, YOLO esegue l'object detection in un unico passaggio, identificando istantaneamente le coordinate dei segnali stradali (\textit{Bounding Boxes}) all'interno di scene complesse.
+
+Il flusso di lavoro implementato prevede i seguenti passaggi:
+\begin{enumerate}
+    \item Caricamento dell'immagine ad alta risoluzione catturata nel contesto urbano.
+    \item Applicazione del modello YOLO per individuare le regioni d'interesse (ROI) corrispondenti ai segnali.
+    \item Ritaglio (\textit{cropping}) automatico delle aree individuate.
+    \item Passaggio dei ritagli alla rete \textbf{MiniAlexNetV2} per la classificazione finale della macro-categoria.
+\end{enumerate}
+
+Questo approccio ibrido ha permesso di ottenere una precisione estremamente elevata, poiché la rete di classificazione lavora solo su porzioni di immagine già identificate come "segnali", eliminando il rumore di fondo del contesto cittadino e riducendo drasticamente i tempi di calcolo rispetto alla scansione sequenziale.

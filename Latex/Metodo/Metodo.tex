@@ -41,8 +41,8 @@ dove:
 \begin{align*}
     N & \text{ è il numero di campioni,} \\
     C & \text{ è il numero di classi,} \\
-    p_{ij} & \text{ è la vera probabilità della classe } j \text{ per il campione } i, \\
-    \hat{p}_{ij} & \text{ è la probabilità predetta della classe } j \text{ per il campione } i.
+    y_{ij} & \text{ è la vera probabilità della classe } j \text{ per il campione } i, \\
+    \hat{y}_{ij} & \text{ è la probabilità predetta della classe } j \text{ per il campione } i.
 \end{align*}
 
 La formula della cross entropy loss, la quale consente il confronto tra due distribuzioni di probabilità, risulta fondamentale in quanto la rete \textbf{MiniAlexNetV2} fornisce per ciascuna immagine una probabilità associata all'appartenenza a una specifica classe. È pertanto necessario effettuare un confronto tra questa distribuzione di probabilità predetta e la distribuzione "reale", la quale assume un valore diverso da zero solamente per la classe alla quale l'immagine in input appartiene.

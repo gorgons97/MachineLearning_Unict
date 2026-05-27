@@ -1,7 +1,7 @@
 \section{Analisi}
 Inizialmente sono state condotte una serie di analisi allo scopo principale di identificare il modello che ha restituito i risultati più promettenti. Successivamente, ci si è dedicati all'indagine delle configurazioni ottimali del momento, al fine di massimizzare l'accuratezza.
 \subsection{Scelta del Modello}
-Per identificare il modello ottimale, sono stati condotti diversi approfondimenti. Per il primo è stata impiegata una rete nota come \textbf{AlexNet}, successivamente una rete basata su AlexNet, denominata \textbf{MiniAlexNet}, ed infine, dover aver introdotto sia layer di Dropout che layer di Batch Normalization, la rete versione \textbf{MiniAlexNetV2}.
+Per identificare il modello ottimale, sono stati condotti diversi approfondimenti. Per il primo è stata impiegata una rete nota come \textbf{AlexNet}, successivamente una rete basata su AlexNet, denominata \textbf{MiniAlexNet}, ed infine, dopo aver introdotto sia layer di Dropout che layer di Batch Normalization, la rete versione \textbf{MiniAlexNetV2}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{Analisi/ConfrontoReti.png}
@@ -32,7 +32,7 @@ I parametri utilizzati per queste prove sono stati:
 \newpage 
 
  \subsection{Calibrazione del Momento}
-Una volta definito il modello, sono stati dedicati sforzi all'ottimizzazione del momento al fine di calibrarlo al meglio. Per valutare l'efficacia di diverse opzioni di momento, si è limitati a considerare quale tra i valori proposti conducesse a un aumento dell'accuratezza congiuntamente a una convergenza della loss verso valori inferiori.
+Una volta definito il modello, sono stati dedicati sforzi all'ottimizzazione del momento al fine di calibrarlo al meglio. Per valutare l'efficacia di diverse opzioni di momento, ci si è limitati a considerare quale tra i valori proposti conducesse a un aumento dell'accuratezza congiuntamente a una convergenza della loss verso valori inferiori.
 
 I dati sull'accuratezza e sulla loss durante l'addestramento del precedente esperimento con MiniAlexNetV2 sono stati conservati. Successivamente, la rete è stata nuovamente addestrata utilizzando un valore di momento pari a 0.7.
 I risultati di questo test sono illustrati nelle Figura \ref{ConfrontoCurve}. \\ Come evidenziato, il modello presenta un'accuratezza leggermente superiore durante la fase di addestramento e test quando il momento è impostato a 0.6. Le curve di loss convergono a valori leggermente inferiori e seguono un andamento poco più regolare.
@@ -49,7 +49,7 @@ Sulla base di tali risultati, si è proceduto mantenendo un valore di momento pa
 \newpage
 
 \subsection{Rec Curve}
-Trovati quindi modello e momento, come mostrato prima, è stato reiterato il processo di training, allenando la rete per altre 200 e calcolando la Rec Curve, riportata in Figura \ref{Rec}.
+Trovati quindi modello e momento, come mostrato prima, è stato reiterato il processo di training, allenando la rete per altre 200 epoche e calcolando la Rec Curve, riportata in Figura \ref{Rec}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{Analisi/RecCurve.jpg}

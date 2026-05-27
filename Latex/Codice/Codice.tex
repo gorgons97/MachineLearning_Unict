@@ -8,12 +8,12 @@ Il codice da noi utilizzato è stato suddiviso e strutturato in modo tale da ave
    \item  Il file denominato\textit{Network} implementa l'architettura delle reti neurali testate, con variazioni nelle architetture e nell'utilizzo di tecniche come Batch Normalization e Dropout per migliorare le prestazioni e la generalizzazione del modello. 
 \end{itemize}
 
-Infine sono stati creati dei notebook con Jupiter in cui è stata usata la nostra struttura dati, insieme alle funzioni di test e training per poter allenare il nostro modello, convertendo prima le immagini da inserire nella struttura dati e modificandole con le opportune trasformazioni. I notebook in questione sono:  
+Infine sono stati creati dei notebook con Jupyter in cui è stata usata la nostra struttura dati, insieme alle funzioni di test e training per poter allenare il nostro modello, convertendo prima le immagini da inserire nella struttura dati e modificandole con le opportune trasformazioni. I notebook in questione sono:  
 \begin{itemize}
 
-   \item Il notebook \textit{Train} si occupa dell'allenamento delle reti \textit{AlexNet}, \textit{MiniAlexNet} e \textit{MiniAlexNetV2} che si occupano di convertire le immagini in tensori che possano allenare la rete, e che infine ritornano il valore di accurancy per ogni tipo di rete testata.
+   \item Il notebook \textit{Train} si occupa dell'allenamento delle reti \textit{AlexNet}, \textit{MiniAlexNet} e \textit{MiniAlexNetV2} che si occupano di convertire le immagini in tensori che possano allenare la rete, e che infine ritornano il valore di accuracy per ogni tipo di rete testata.
    
-   \item Ed infine il modulo \textit{Result} che opera caricando i tre modello pre-allenati. Successivamente, utilizza l'URL di un'immagine o un'immagine locale per eseguire una previsione sulla categoria del segnale stradale presente nell'immagine. La categoria predetta viene successivamente stampata, comprendendo classi come indicatory, prohibitory, warning, oppure segnalando ERROR 404 NOT FOUND in caso di errore nella previsione.
+   \item Ed infine il modulo \textit{Result} che opera caricando i tre modelli pre-allenati. Successivamente, utilizza l'URL di un'immagine o un'immagine locale per eseguire una previsione sulla categoria del segnale stradale presente nell'immagine. La categoria predetta viene successivamente stampata, comprendendo classi come \textit{indicatory} (indicazione), \textit{prohibitory} (divieto), \textit{warning} (pericolo), oppure segnalando ERROR 404 NOT FOUND in caso di errore nella previsione.
 \end{itemize}
 
 
