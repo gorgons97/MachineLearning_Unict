@@ -1,1 +1,1 @@
-yolo detect train model=yolov8n.pt data=data.yaml epochs=50 imgsz=640 batch=16
+yolo detect train model=yolov8n.pt data=data.yaml epochs=200 imgsz=640 batch=16

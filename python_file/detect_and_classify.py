@@ -8,7 +8,7 @@ from torchvision import transforms
 
 import python_file.network as Network
 import python_file.dataclass as StreetSign
-from python_file.dirPath import modelliDir, logsDir, yoloResult, yoloWeights
+from python_file.dirPath import modelliDir, yoloResult, yoloWeights
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
