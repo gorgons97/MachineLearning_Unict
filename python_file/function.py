@@ -1,6 +1,6 @@
 from torch import nn
 from torch.optim import SGD
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, roc_auc_score, roc_curve, auc
 from os import path
 from os.path import join
 
@@ -139,6 +139,60 @@ def rec_curve(predictions, gt):
     # restituiamo le soglie, la frazione di campioni correttamente regressi e l'area sopra la curva
     return tolerances, correct, AOC
 
+#Funzione per calcolare la curva di classificazione, data una serie di predizioni e i corrispondenti valori reali. Utile per valutare le prestazioni di un classificatore, specialmente in presenza di classi sbilanciate.
+def plot_roc_curve(data_labels_test, data_test_probabilities):
+    # Classi presenti nel test set (escludi la classe 3 "sfondo")
+    labels_present = np.unique(data_labels_test)  # [0, 1, 2]
+    print(f"Classi nel test set: {labels_present}")
+
+    probs_selected = data_test_probabilities[:, labels_present]
+
+    #Rinormalizzazione per ridistribuire la probabilià, in modo da escludere il caso Background
+    probs_normalized = probs_selected / probs_selected.sum(axis=1, keepdims=True)
+
+    #Verifica che sommino e diano 1
+    print(f"Somma probabilità (dopo normalizzazione): {probs_normalized.sum(axis=1).mean():.4f}")
+
+    #Calcola AUC con probabilità normalizzate (NON con probs_selected!)
+    auc_per_class = roc_auc_score(
+        data_labels_test, 
+        probs_normalized,  # ← Usa probs_normalized, NON probs_selected!
+        multi_class='ovr', 
+        average=None,
+        labels=labels_present.tolist()
+    )
+
+    print(f"\nAUC per classe:")
+    for cls, auc_val in zip(labels_present, auc_per_class):
+        print(f"  Classe {cls}: {auc_val:.3f}")
+    print(f"\nAUC macro (media): {auc_per_class.mean():.3f}")
+
+    plt.figure(figsize=(10, 8))
+
+    for i, label in enumerate(labels_present):
+        # Crea bitmask per questa classe (one-vs-rest)
+        y_true_binary = (data_labels_test == label).astype(int)
+        # Usa la colonna corrispondente delle probabilità
+        y_scores = data_test_probabilities[:, i]
+
+        fpr, tpr, thresholds = roc_curve(y_true_binary, y_scores)
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(fpr, tpr, lw=2, label=f'Classe {label} (AUC = {roc_auc:.3f})')
+
+    # Linea di riferimento
+    plt.plot([0, 1], [0, 1], 'k--', lw=2, label='Random Classifier')
+
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate (FPR)', fontsize=12)
+    plt.ylabel('True Positive Rate (TPR)', fontsize=12)
+    plt.title('Curva ROC MiniAlexNet - Classe Sfondo (3) Esclusa', fontsize=14)
+    plt.legend(loc="lower right", fontsize=10)
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    plt.show()
+
 #Funzione per plottare la loss di training e test a partire da un file CSV generato durante il training. Utile per visualizzare l'andamento della loss durante le epoche di addestramento.
 def plot_loss_from_csv(csv_path, title=None):
     df = pd.read_csv(csv_path)
@@ -153,6 +207,7 @@ def plot_loss_from_csv(csv_path, title=None):
     plt.legend()
     plt.tight_layout()
     plt.show()
+    
 
 #Funzione per plottare più curve di loss a partire da più file CSV. Utile per confrontare l'andamento della loss di diversi esperimenti o modelli.
 def plot_multiple_losses(csv_files, labels=None):
