@@ -140,7 +140,7 @@ def rec_curve(predictions, gt):
     return tolerances, correct, AOC
 
 #Funzione per calcolare la curva di classificazione, data una serie di predizioni e i corrispondenti valori reali. Utile per valutare le prestazioni di un classificatore, specialmente in presenza di classi sbilanciate.
-def plot_roc_curve(data_labels_test, data_test_probabilities):
+def plot_roc_curve(data_labels_test, data_test_probabilities, title=None):
     # Classi presenti nel test set (escludi la classe 3 "sfondo")
     labels_present = np.unique(data_labels_test)  # [0, 1, 2]
     print(f"Classi nel test set: {labels_present}")
@@ -187,7 +187,7 @@ def plot_roc_curve(data_labels_test, data_test_probabilities):
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate (FPR)', fontsize=12)
     plt.ylabel('True Positive Rate (TPR)', fontsize=12)
-    plt.title('Curva ROC MiniAlexNet - Classe Sfondo (3) Esclusa', fontsize=14)
+    plt.title(title or 'Curva ROC', fontsize=14)
     plt.legend(loc="lower right", fontsize=10)
     plt.grid(alpha=0.3)
     plt.tight_layout()
@@ -222,6 +222,40 @@ def plot_multiple_losses(csv_files, labels=None):
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.title("Loss comparison")
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+#Funzione per plottare l'accuracy di training e test a partire da un file CSV generato durante il training. Utile per visualizzare l'andamento dell'accuracy durante le epoche di addestramento.
+def plot_accuracy_from_csv(csv_path, title=None):
+    df = pd.read_csv(csv_path)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(df["epoch"], df["train_acc"], label="train accuracy")
+    plt.plot(df["epoch"], df["test_acc"], label="test accuracy")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.title(title or csv_path)
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+    
+
+#Funzione per plottare più curve di accuracy a partire da più file CSV. Utile per confrontare l'andamento dell'accuracy di diversi esperimenti o modelli.
+def plot_multiple_accuracy(csv_files, labels=None):
+    plt.figure(figsize=(10, 6))
+
+    for i, csv_path in enumerate(csv_files):
+        df = pd.read_csv(csv_path)
+        label = labels[i] if labels else csv_path
+        plt.plot(df["epoch"], df["test_acc"], label=f"{label} test accuracy")
+        plt.plot(df["epoch"], df["train_acc"], linestyle="--", label=f"{label} train accuracy")
+
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.title("Accuracy comparison")
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.tight_layout()

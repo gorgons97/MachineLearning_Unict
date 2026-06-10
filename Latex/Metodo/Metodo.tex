@@ -1,22 +1,31 @@
 \section{Metodo}
 
-Verrà esaminato ora l'approccio eseguito per risolvere la problematica: il compito è configurato come un problema di classificazione con tre categorie (indicazione, avvertimento, divieto).
+Verrà esaminato ora l'approccio eseguito per risolvere la problematica: il compito è configurato come un problema di classificazione con quattro categorie (indicazione, avvertimento, divieto, background).
 
 \subsection{Rete Utilizzata}
 
-In merito a ciò, dopo aver condotto alcuni esperimenti, i quali verranno descritti più dettagliatamente nel capitolo successivo, si è optato per l'implementazione di una Convolutional Neural Network (CNN) ispirata ad AlexNet. A questa architettura, è stata applicata sia la tecnica della batch normalization che il dropout al fine di prevenire problemi di overflow durante il calcolo delle funzioni di attivazione e problemi di overfitting. Da adesso in poi il modello verrà nominato come \textbf{MiniAlexNetV2}. Nella figura 3 è possibile osservare una rappresentazione schematica della rete utilizzata.
+In merito a ciò, dopo aver condotto alcuni esperimenti, i quali verranno descritti più dettagliatamente nel capitolo successivo, si è optato per l'implementazione di una Convolutional Neural Network (CNN) ispirata ad AlexNet (\textit{LeNetColor}). A questa architettura, è stata applicata sia la tecnica della batch normalization che il dropout al fine di prevenire problemi di overflow durante il calcolo delle funzioni di attivazione e problemi di overfitting. Da adesso in poi il modello verrà nominato come \textbf{MiniAlexNetV2}. Nella figura \ref{fig:reti} è possibile osservare una rappresentazione schematica della rete LenetColor che è il punto di partenza e la prima modifica eseguita per ottenere la rete MiniAlexNet, che sono state entrambe il punto di partenza per poi arrivare alla rete MiniAlexNetV2 in figura \ref{MiniAlexNetV2}, la quale è stata poi scelta come rete finale.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.50\textwidth}
     \centering
-    \includegraphics[scale=0.8]{Metodo/Rete1.png}
+    \includegraphics[width=\linewidth]{Metodo/LeNetColor_vertical.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.50\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Metodo/MiniAlexNet_vertical.png}
+\end{minipage}\hfill
+
+\caption{Confronto tra le tre reti neurali}
+\label{fig:reti}
 \end{figure}
 
-
-\begin{figure}[H] 
+\begin{figure}
     \centering
-    \includegraphics[scale=0.8]{Metodo/Rete2.png}
-    \caption{schema rete \textbf{MiniAlexNetV2}}
-    \label{fig:enter-label}
+    \includegraphics[scale=0.4]{Metodo/MiniAlexNetV2_vertical.png}
+    \caption{MiniAlexNetV2, rete utilizzata per il training}
+    \label{MiniAlexNetV2}
 \end{figure}
 
 Negli input della rete, sono state adottate le cosiddette "regole generali approssimative": i batch di dati sono stati configurati con dimensioni di 1024 per la fase di addestramento e di 2048 per le fasi di convalida e test, implementando MaxPooling con dimensione 2 e uno stride di dimensione 1. Come funzione di attivazione, è stata impiegata l'Unità Lineare Rettificata, nota come ReLU, la quale restituisce il valore stesso della combinazione se i dati sono positivi, mentre annulla quelli negativi. Tutti questi parametri sono formalmente espressi mediante un'apposita equazione matematica \eqref{1}:
@@ -88,7 +97,7 @@ Da questa analisi, è possibile definire l'accuratezza del modello come il rappo
 
 Questo parametro fornisce una misura della corretta classificazione effettuata dal modello rispetto al numero complessivo di previsioni eseguite. 
 \newline 
-Oltre all'accuratezza, è stata elaborata anche la curva REC, una curva grafica che illustra le prestazioni di un modello di classificazione al variare della soglia di decisione.
+Oltre all'accuratezza, è stata elaborata anche la curva ROC, una curva grafica che illustra le prestazioni di un modello di classificazione al variare della soglia di decisione.
 
 
 
