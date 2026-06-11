@@ -9,9 +9,8 @@
 \contentsline {section}{\numberline {3}Analisi}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Scelta del Modello}{10}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}ROC Curve}{11}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Calibrazione del Momento}{12}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Codice}{14}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Caso Reale}{15}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Divisione}{15}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}YOLO}{15}{subsubsection.4.1.2}%
-\contentsline {section}{\numberline {5}Conclusione}{17}{section.5}%
+\contentsline {section}{\numberline {4}Codice}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Caso Reale}{13}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Divisione}{13}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}YOLO}{13}{subsubsection.4.1.2}%
+\contentsline {section}{\numberline {5}Conclusione}{15}{section.5}%
