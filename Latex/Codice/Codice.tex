@@ -1,40 +1,38 @@
 \section{Codice}
 Il codice da me utilizzato è stato suddiviso e strutturato in modo tale da avere all'interno della sotto cartella "python\_file" i seguenti file:
-\begin{itemize}
-   \item Il file denominato \textit{dataclass} che definisce le classi e le trasformazioni per la manipolazione di dataset di segnali stradali. Include classi per il training (\textit{StreetSignDataset}) e il testing (\textit{StreetSignTest}), insieme a trasformazioni come il ridimensionamento (\textit{Rescale}), il ritaglio casuale (\textit{RandomCrop}), il ritaglio specifico (\textit{Crop}), e la conversione in tensori (\textit{ToTensor}). La funzione \textit{show\_landmarks\_batch} è un'utilità per visualizzare batch di immagini con landmarks. In sintesi, il codice fornisce un'infrastruttura per preparare dati e modelli per immagini di segnali stradali.   
-   
-   \item Il file denominato \textit{function} che fornisce funzioni compatte per l'addestramento e il test di un classificatore. La prima parte del codice addestra un modello utilizzando SGD e cross-entropy, con TensorBoard e salvataggio dei pesi. La seconda parte valuta le prestazioni del modello su un set di dati di test, restituendo predizioni e etichette reali. In sintesi il flusso principale configura parametri, carica il modello e itera attraverso le epoche e le fasi di training/test, registrando i risultati su TensorBoard e salvando i pesi del modello.
-   
-   \item  Il file denominato\textit{network} implementa l'architettura delle reti neurali testate, con variazioni nelle architetture e nell'utilizzo di tecniche come Batch Normalization e Dropout per migliorare le prestazioni e la generalizzazione del modello. 
-   
-   \item  Il file denominato\textit{detect\_and\_classify} utilizzato per implementare la funzione che permette di usare YOLO allo scopo di riconoscere i segnali stradali all'interno di un'immagine presa da un contesto reale. Sarà quindi questa parte che si occuperà di prendere le immagini passarle alla rete YOLO preallenata con immagini reali e infine la porzione di immmagine tagliata col segnale stradale viene passata alla rete MiniAlexNetV2 per identificare che tipo di segnale sia, una volta rintracciato esso 
+\begin{itemize}   
+    \item Il file \textit{dataclass} definisce le classi e le trasformazioni utilizzate per la gestione del dataset di segnali stradali. In particolare, include le classi per il training (\textit{StreetSignDataset}) e per il testing (\textit{StreetSignTest}), oltre a trasformazioni quali il ridimensionamento (\textit{Rescale}), il ritaglio casuale (\textit{RandomCrop}), il ritaglio specifico (\textit{Crop}) e la conversione in tensori (\textit{ToTensor}). È inoltre presente la funzione \textit{show\_landmarks\_batch}, impiegata per visualizzare batch di immagini con i relativi landmarks. Nel complesso, il file fornisce l'infrastruttura necessaria per la preparazione dei dati.
+
+    \item Il file \textit{function} raccoglie le funzioni principali per l'addestramento e il test del classificatore. La prima parte del codice esegue il training del modello mediante \textit{Stochastic Gradient Descent} e \textit{Cross Entropy Loss}, con il supporto di TensorBoard e del salvataggio dei pesi. La seconda parte valuta il modello sul set di test, restituendo le predizioni e le etichette reali. Inoltre, nello stesso file sono presenti le funzioni per salvare i risultati in formato JSON e CSV e per generare i grafici delle curve di accuratezza e di loss. È infine inclusa una funzione per il calcolo e la visualizzazione della curva ROC a partire dalle label e dalle predizioni del modello.
+
+    \item Il file \textit{network} implementa le architetture delle reti neurali testate, includendo diverse varianti e l'impiego di tecniche come \textit{Batch Normalization} e \textit{Dropout} per migliorare le prestazioni e la capacità di generalizzazione del modello.
+
+    \item Il file \textit{detect\_and\_classify} implementa la procedura utilizzata per applicare YOLO al riconoscimento dei segnali stradali all'interno di immagini acquisite in un contesto reale. In questa fase, l'immagine viene inizialmente analizzata da YOLO, addestrato su immagini reali, per individuare il segnale stradale; successivamente, la porzione ritagliata viene fornita alla rete \textbf{MiniAlexNetV2} per determinarne la classe. In questo modo, il sistema realizza una pipeline completa di detection e classification.
 \end{itemize}
 
-Infine sono stati creati dei notebook con Jupyter in cui è stata usata la nostra struttura dati, insieme alle funzioni di test e training per poter allenare il nostro modello, convertendo prima le immagini da inserire nella struttura dati e modificandole con le opportune trasformazioni. I notebook in questione sono:  
-\begin{itemize}
-
-   \item \textit{train} si occupa dell'allenamento delle reti \textit{AlexNet}, \textit{MiniAlexNet} e \textit{MiniAlexNetV2} che si occupano di convertire le immagini in tensori che possano allenare la rete, e che infine ritornano il valore di accuracy per ogni tipo di rete testata.
-   
-   \item \textit{result} che opera caricando i tre modelli pre-allenati. Successivamente, utilizza l'URL di un'immagine o un'immagine locale per eseguire una previsione sulla categoria del segnale stradale presente nell'immagine. La categoria predetta viene successivamente stampata, comprendendo classi come \textit{indicatory} (indicazione), \textit{prohibitory} (divieto), \textit{warning} (pericolo), oppure segnalando ERROR 404 NOT FOUND in caso di errore nella previsione il caso \textit{Background} con cui abbiamo allenato la rete qui non lo consideriamo, anche perchè non è una classe di interesse.
-   
-   \item \textit{test\_reale} che opera caricando solo il modello \textit{MiniAlexNetV2}, usandolo per eseguire una previsione sulla categoria del segnale stradale presente in un'immagine reale, e infine stampando la categoria predetta. In questo caso, l'immagine reale viene processata per identificare e ritagliare il segnale stradale, che viene poi passato alla rete MiniAlexNetV2 per la classificazione. La categoria predetta viene poi inserita sull'immagine e infine la nuova immagine stamapta.
+Infine, sono stati creati alcuni notebook in Jupyter, nei quali è stata utilizzata la struttura dati definita in precedenza insieme alle funzioni di training e test, al fine di addestrare il modello. Prima dell'addestramento, le immagini vengono convertite nel formato richiesto dalla struttura dati e sottoposte alle opportune trasformazioni. I notebook realizzati sono i seguenti:
+\begin{itemize}    
+   \item \textit{train}, che si occupa dell'addestramento delle reti \textit{AlexNet}, \textit{MiniAlexNet} e \textit{MiniAlexNetV2}. In particolare, il notebook esegue il caricamento delle immagini, la loro conversione in tensori e l'addestramento dei modelli, restituendo infine il valore di accuratezza ottenuto da ciascuna rete.
+    
+   \item \textit{result}, che carica i tre modelli precedentemente addestrati ed esegue una previsione a partire da un'immagine fornita tramite URL oppure da un'immagine locale. Il notebook restituisce quindi la classe predetta del segnale stradale, tra cui \textit{indicatory} (indicazione), \textit{prohibitory} (divieto) e \textit{warning} (pericolo). In caso di errore nella previsione, viene visualizzato il messaggio \textit{ERROR 404 NOT FOUND}. La classe \textit{Background}, sebbene presente nella fase di addestramento, non viene considerata in quanto non rilevante ai fini dell'applicazione.
+    
+   \item \textit{test\_reale}, che carica esclusivamente il modello \textit{MiniAlexNetV2} e lo utilizza per eseguire la previsione della categoria del segnale stradale presente in un'immagine reale. In questo caso, l'immagine viene prima elaborata per individuare e ritagliare il segnale stradale, che viene successivamente passato alla rete \textit{MiniAlexNetV2} per la classificazione. La classe predetta viene quindi sovrapposta all'immagine, che viene infine visualizzata.
 \end{itemize}
 
 \subsection{Caso Reale}
-Analizziamo più in dettaglio il notebook \textit{test\_reale} in cui è presente la parte di codice relativa al test della rete neurale in un contesto urbano. Se, per esempio, dotassimo un veicolo di una telecamera per riprendere la strada in tempo reale, potremmo acquisire delle immagini durante il tragitto, e verificare la presenza di segnali stradali inviando infine l'output al sistema di bordo o al guidatore. Per fare ciò, ci si è posti il problema di come isolare la singola immagine del segnale rispetto al contesto; per eseguire questa ricerca si sono usati due processi:
+Analizziamo più in dettaglio il notebook \textit{test\_reale} in cui è presente la parte di codice relativa al test della rete neurale in un contesto urbano. Se, per esempio, dotassimo un veicolo di una telecamera per riprendere la strada in tempo reale, potremmo acquisire delle immagini durante il tragitto, e verificare la presenza di segnali stradali inviando infine l'output al sistema di bordo o al guidatore. Per fare ciò, ci si è posti il problema di come isolare la singola immagine del segnale rispetto al contesto; per eseguire questa ricerca sono stati studiati due processi:
 
 \begin{itemize}
-    \item \textbf{Divisione in sottoimmagini:} consiste nel suddividere l'immagine in numerose porzioni e verificare per ognuna di esse il contenuto;
+    \item \textbf{Divisione in sottoimmagini:} consiste nel suddividere l'immagine in numerose porzioni e verificare per ognuna di esse se contieme un segnale stradale;
     \item \textbf{Uso di YOLO:} utilizzo di uno strumento di object detection che permette di individuare le regioni d'interesse (ROI) all'interno delle immagini, identificando le porzioni candidate alla classificazione;
 \end{itemize}
 
 \subsubsection{Divisione}
-L'uso della divisione in sottoimmagini è sembrata inizialmente la soluzione più semplice, ma ha presentato scarsi risultati sia in termini di prestazioni che di affidabilità.
-Il motivo risiede nella necessità di processare sequenzialmente ogni ritaglio, causando lentezza di calcolo. Inoltre, l'accuratezza è limitata dal fatto che il dataset di addestramento non copre tutte le possibili variazioni del contesto circostante.
+L'uso della divisione in sottoimmagini è la soluzione più semplice, ma ha presentato scarsi risultati sia in termini di prestazioni che di affidabilità.
+Il motivo risiede nella necessità di processare sequenzialmente ogni ritaglio, causando lentezza di calcolo. Inoltre, l'accuratezza è limitata dal fatto che il dataset di addestramento non copre tutte le possibili variazioni del contesto circostante, in più si ha il problema che quando noi eseguiamo il taglio dell'immagine non sempre il segnale ricadrà sul centro della sottoimmagine ma ve ne potrebbe essere solo una parte, questo fa si che la rete non è in grado di riconoscere il segnale o di creare dei falsi positivi.
 
 \subsubsection{YOLO}
-Per ovviare ai limiti della suddivisione manuale, nel notebook \textit{test\_reale} è stato implementato l'uso dell'algoritmo \textbf{YOLO} (You Only Look Once). A differenza dell'approccio precedente, YOLO esegue l'object detection in un unico passaggio, identificando istantaneamente le coordinate dei segnali stradali (\textit{Bounding Boxes}) all'interno di scene complesse.
-
+Per ovviare ai limiti della suddivisione manuale, nel notebook \textit{test\_reale} è stato implementato l'uso dell'algoritmo \textbf{YOLO} (You Only Look Once). A differenza dell'approccio precedente, YOLO esegue l'object detection in un unico passaggio, identificando istantaneamente le coordinate dei segnali stradali (\textit{Bounding Boxes}) all'interno di scene complesse, per poi passare la porzione d'immagine ritagliata col segnale alla rete \textit{MiniAlexNetV2} per poter identificare la tipologia di segnale stradale.
 
 Il flusso di lavoro implementato prevede i seguenti passaggi:
 \begin{enumerate}
