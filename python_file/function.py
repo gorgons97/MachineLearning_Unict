@@ -121,26 +121,8 @@ def test_classifier(model, loader):
         labels.extend(list(labs))
     return np.array(probabilities), np.array(labels)
 
-#Funzione per calcolare la curva di regressione, data una serie di predizioni e i corrispondenti valori reali Inutile per il caso di classificazione
-def rec_curve(predictions, gt):
-    assert predictions.shape == gt.shape
-    # calcoliamo tutti gli errori mediante MAE
-    errors = np.abs(np.array((predictions-gt)))
-    
-    # prendiamo i valori unici degli errori e ordiniamoli
-    tolerances = sorted(np.unique(errors))
-    correct= [] #lista delle "accuracy" relative a ogni soglia
-    
-    for t in tolerances:
-        correct.append((errors<=t).mean()) # frazione di elementi "correttamente" regressi
-    AUC = np.trapezoid(correct, tolerances) #area sotto la curva calcolata col metodo dei trapezi
-    tot_area = np.max(tolerances)*1 # area totale
-    AOC = tot_area - AUC
-    # restituiamo le soglie, la frazione di campioni correttamente regressi e l'area sopra la curva
-    return tolerances, correct, AOC
-
 #Funzione per calcolare la curva di classificazione, data una serie di predizioni e i corrispondenti valori reali. Utile per valutare le prestazioni di un classificatore, specialmente in presenza di classi sbilanciate.
-def plot_roc_curve(data_labels_test, data_test_probabilities, title=None):
+def plot_roc_curve(data_labels_test, data_test_probabilities, title=None, save_path=None):
     # Classi presenti nel test set (escludi la classe 3 "sfondo")
     labels_present = np.unique(data_labels_test)  # [0, 1, 2]
     print(f"Classi nel test set: {labels_present}")
@@ -191,10 +173,12 @@ def plot_roc_curve(data_labels_test, data_test_probabilities, title=None):
     plt.legend(loc="lower right", fontsize=10)
     plt.grid(alpha=0.3)
     plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path)
     plt.show()
 
 #Funzione per plottare la loss di training e test a partire da un file CSV generato durante il training. Utile per visualizzare l'andamento della loss durante le epoche di addestramento.
-def plot_loss_from_csv(csv_path, title=None):
+def plot_loss_from_csv(csv_path, title=None, save_path=None):
     df = pd.read_csv(csv_path)
 
     plt.figure(figsize=(10, 6))
@@ -206,11 +190,13 @@ def plot_loss_from_csv(csv_path, title=None):
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path)
     plt.show()
     
 
 #Funzione per plottare più curve di loss a partire da più file CSV. Utile per confrontare l'andamento della loss di diversi esperimenti o modelli.
-def plot_multiple_losses(csv_files, labels=None):
+def plot_multiple_losses(csv_files, labels=None, save_path=None):
     plt.figure(figsize=(10, 6))
 
     for i, csv_path in enumerate(csv_files):
@@ -225,10 +211,12 @@ def plot_multiple_losses(csv_files, labels=None):
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.tight_layout()
+    if save_path:
+        plt.savefig(save_path)
     plt.show()
 
 #Funzione per plottare l'accuracy di training e test a partire da un file CSV generato durante il training. Utile per visualizzare l'andamento dell'accuracy durante le epoche di addestramento.
-def plot_accuracy_from_csv(csv_path, title=None):
+def plot_accuracy_from_csv(csv_path, title=None, save_path=None):
     df = pd.read_csv(csv_path)
 
     plt.figure(figsize=(10, 6))
@@ -239,12 +227,14 @@ def plot_accuracy_from_csv(csv_path, title=None):
     plt.title(title or csv_path)
     plt.grid(True, alpha=0.3)
     plt.legend()
+    if save_path:
+        plt.savefig(save_path)
     plt.tight_layout()
     plt.show()
     
 
 #Funzione per plottare più curve di accuracy a partire da più file CSV. Utile per confrontare l'andamento dell'accuracy di diversi esperimenti o modelli.
-def plot_multiple_accuracy(csv_files, labels=None):
+def plot_multiple_accuracy(csv_files, labels=None, save_path=None):
     plt.figure(figsize=(10, 6))
 
     for i, csv_path in enumerate(csv_files):
@@ -258,5 +248,25 @@ def plot_multiple_accuracy(csv_files, labels=None):
     plt.title("Accuracy comparison")
     plt.grid(True, alpha=0.3)
     plt.legend()
+    if save_path:
+        plt.savefig(save_path)
     plt.tight_layout()
     plt.show()
+
+#Funzione per calcolare la curva di regressione, data una serie di predizioni e i corrispondenti valori reali Inutile per il caso di classificazione (INUTILIZZATA NEL PROGETTO), ma può essere utile per valutare le prestazioni di un regressore, specialmente in presenza di errori di diversa entità.
+def rec_curve(predictions, gt):
+    assert predictions.shape == gt.shape
+    # calcoliamo tutti gli errori mediante MAE
+    errors = np.abs(np.array((predictions-gt)))
+    
+    # prendiamo i valori unici degli errori e ordiniamoli
+    tolerances = sorted(np.unique(errors))
+    correct= [] #lista delle "accuracy" relative a ogni soglia
+    
+    for t in tolerances:
+        correct.append((errors<=t).mean()) # frazione di elementi "correttamente" regressi
+    AUC = np.trapezoid(correct, tolerances) #area sotto la curva calcolata col metodo dei trapezi
+    tot_area = np.max(tolerances)*1 # area totale
+    AOC = tot_area - AUC
+    # restituiamo le soglie, la frazione di campioni correttamente regressi e l'area sopra la curva
+    return tolerances, correct, AOC
