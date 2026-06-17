@@ -1,17 +1,16 @@
 \section{Caso Reale}
-Nel notebook \textit{test\_reale} è presente la parte di codice relativa al test della rete neurale in un contesto urbano. Se, per esempio, dotassimo un veicolo di una telecamera per riprendere la strada in tempo reale, potremmo scattare delle fotografie durante il tragitto, verificare la presenza di segnali stradali e inviare l'output al sistema di bordo o al guidatore. Per fare ciò, ci si è posti il problema di come isolare la singola immagine del segnale rispetto al contesto; per eseguire questa ricerca si sono usati due processi:
+Nel notebook \textit{test\_reale} è implementata la fase di valutazione della rete neurale in contesto urbano. In uno scenario applicativo, un veicolo dotato di telecamera può acquisire immagini in tempo reale, verificare la presenza di segnali e trasmettere l'output al sistema di bordo o al conducente. Il problema principale consiste nell'isolare il segnale dal contesto; a tal fine sono stati considerati due approcci:
 
 \begin{itemize}
-    \item \textbf{Divisione in sottoimmagini:} consiste nel suddividere l'immagine in numerose porzioni e verificare per ognuna di esse il contenuto;
-    \item \textbf{Uso di YOLO:} utilizzo di uno strumento di object detection che permette di individuare le regioni d'interesse (ROI) all'interno delle immagini, identificando le porzioni candidate alla classificazione;
+    \item \textbf{Divisione in sottoimmagini:} suddivisione dell'immagine in numerose porzioni e verifica del contenuto di ciascuna di esse;
+    \item \textbf{Uso di YOLO:} impiego di uno strumento di \textit{object detection} per individuare le regioni di interesse (ROI) candidate alla classificazione;
 \end{itemize}
 
 \subsection{Divisione}
-L'uso della divisione in sottoimmagini è sembrata inizialmente la soluzione più semplice, ma ha presentato scarsi risultati sia in termini di prestazioni che di affidabilità.
-Il motivo risiede nella necessità di processare sequenzialmente ogni ritaglio, causando lentezza di calcolo. Inoltre, l'accuratezza è limitata dal fatto che il dataset di addestramento non copre tutte le possibili variazioni del contesto circostante.
+La divisione in sottoimmagini rappresenta l'approccio più semplice, ma ha mostrato prestazioni e affidabilità limitate. La necessità di processare sequenzialmente ogni ritaglio comporta infatti elevati tempi di calcolo; inoltre, la variabilità del contesto reale non è sempre adeguatamente rappresentata nel dataset di addestramento.
 
 \subsection{YOLO}
-Per ovviare ai limiti della suddivisione manuale, nel notebook \textit{test\_reale} è stato implementato l'uso dell'algoritmo \textbf{YOLO} (You Only Look Once). A differenza dell'approccio precedente, YOLO esegue l'object detection in un unico passaggio, identificando istantaneamente le coordinate dei segnali stradali (\textit{Bounding Boxes}) all'interno di scene complesse.
+Per superare i limiti della suddivisione manuale, nel notebook \textit{test\_reale} è stato implementato l'algoritmo \textbf{YOLO} (You Only Look Once). A differenza dell'approccio precedente, YOLO esegue la \textit{object detection} in un unico passaggio, identificando le coordinate dei segnali stradali (\textit{bounding boxes}) anche in scene complesse.
 
 Il flusso di lavoro implementato prevede i seguenti passaggi:
 \begin{enumerate}
@@ -21,4 +20,4 @@ Il flusso di lavoro implementato prevede i seguenti passaggi:
     \item Passaggio dei ritagli alla rete \textbf{MiniAlexNetV2} per la classificazione finale della macro-categoria.
 \end{enumerate}
 
-Questo approccio ibrido ha permesso di ottenere una precisione estremamente elevata, poiché la rete di classificazione lavora solo su porzioni di immagine già identificate come "segnali", eliminando il rumore di fondo del contesto cittadino e riducendo drasticamente i tempi di calcolo rispetto alla scansione sequenziale.
+Questo approccio ibrido ha consentito di ottenere una precisione elevata, poiché la rete di classificazione opera su porzioni di immagine già identificate come segnali, riducendo il rumore di fondo e i tempi di calcolo rispetto alla scansione sequenziale.

@@ -8,9 +8,15 @@
 \contentsline {subsection}{\numberline {2.3}Valutazione}{9}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Analisi}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Scelta del Modello}{10}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}ROC Curve}{11}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Codice}{12}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Caso Reale}{13}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Divisione}{13}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}YOLO}{13}{subsubsection.4.1.2}%
-\contentsline {section}{\numberline {5}Conclusione}{15}{section.5}%
+\contentsline {subsection}{\numberline {3.2}Curve ROC}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Calibrazione del Learning Rate e del Momento}{12}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Analisi dell'Accuratezza}{12}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Analisi della Loss}{13}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Curve ROC per le Diverse Configurazioni}{14}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Analisi dell'Addestramento Prolungato}{16}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Sintesi dei Risultati e Configurazione Ottimale}{16}{subsubsection.3.3.5}%
+\contentsline {section}{\numberline {4}Codice}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Caso Reale}{19}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Divisione}{19}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}YOLO}{19}{subsubsection.4.1.2}%
+\contentsline {section}{\numberline {5}Conclusione}{21}{section.5}%

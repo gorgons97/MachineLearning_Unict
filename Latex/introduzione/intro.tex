@@ -1,11 +1,11 @@
 \section{Problema: Riconoscimento dei Segnali Stradali}
-In questa era dell'Intelligenza Artificiale, gli esseri umani stanno diventando sempre più dipendenti dalla tecnologia. Con l'evoluzione tecnologica, aziende multinazionali come Google, Tesla e molte altre stanno lavorando per automatizzare i veicoli, cercando di creare mezzi autonomi il più possibile precisi. Infatti, le auto a guida autonoma, in cui è il veicolo stesso a simulare il conducente, non necessitano di una guida umana. È lecito preoccuparsi degli aspetti legati alla sicurezza, in quanto è sempre presente la possibilità di incidenti; sappiamo infatti che nessuna macchina è ancora in grado di eguagliare la precisione degli esseri umani alla guida. I ricercatori stanno testando numerosi algoritmi per garantire una sicurezza stradale ottimale. Fra questi, un compito fondamentale è il \textbf{Riconoscimento dei Segnali Stradali}.
+La progressiva diffusione dell'Intelligenza Artificiale nei sistemi di trasporto ha reso il riconoscimento automatico dei segnali stradali un tema di primaria rilevanza. Lo sviluppo di veicoli a guida autonoma richiede modelli affidabili, in grado di supportare decisioni sicure in scenari dinamici e complessi. In tale contesto, la corretta interpretazione della segnaletica rappresenta un prerequisito essenziale per robustezza e sicurezza operativa.
 
-Quando si è in strada, si vedono vari segnali stradali come curve a sinistra o a destra, limiti di velocità, divieto di sorpasso ai veicoli pesanti, divieto di accesso, attraversamento pedonale per bambini, ecc., che è necessario seguire per una guida sicura. Allo stesso modo, i veicoli autonomi devono interpretare questi segnali e prendere decisioni per garantire la precisione. Per riconoscere a quale categoria appartiene un segnale stradale è quindi necessario classificarlo correttamente.
+Nel traffico reale compaiono segnali eterogenei (ad esempio limiti di velocità, divieti, obblighi e avvisi), la cui corretta interpretazione è necessaria per una guida conforme e sicura. In modo analogo, un sistema di guida autonoma deve classificare tali segnali con elevata accuratezza, così da tradurre l'informazione visiva in decisioni operative coerenti.
 
 In questo lavoro viene proposto un modello di classificazione dei segnali stradali basato su una rete neurale convoluzionale (CNN).
 
-In figura \ref{Esempio} è presente un esempio visivo che descrive il problema. 
+La Figura \ref{Esempio} riporta un esempio visivo del problema affrontato.
 \vspace{+1truecm}
 \begin{figure}[H]
     \centering
@@ -18,7 +18,7 @@ In figura \ref{Esempio} è presente un esempio visivo che descrive il problema.
 
 \subsection{Dataset}
 
-Il dataset completo delle immagini, scaricabile al link \url{https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign}, è composto da più di 50.000 foto di vari segnali stradali (limiti di velocità, attraversamenti, segnali stradali, ecc.), con una dimensione totale di circa 560 MB. \\ Per questo lavoro nello specifico sono state utilizzate le immagini contenute nel percorso\\ $\text{DITS}$, con una dimensione di 450 MB.
+Il dataset completo, disponibile all'indirizzo \url{https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign}, contiene oltre 50.000 immagini di segnali stradali e occupa circa 560 MB. Nel presente lavoro è stato utilizzato il sottoinsieme presente nel percorso $\text{DITS}$, con dimensione complessiva pari a circa 450 MB.
 
 \begin{figure}[H]
     \centering
@@ -28,11 +28,11 @@ Il dataset completo delle immagini, scaricabile al link \url{https://www.kaggle.
     \label{fig:enter-label}
 \end{figure}
 
-Del dataset sono presenti due versioni una in cui i segnali sono divisi per segnale specifico e un'ultima da me scelta la divisione per macro categoria di segnale, in questo modo i segnali del dataset si dividono nelle loro 3 macrocategorie, a cui è poi stata aggiunta attraverso uno script una quarta categoria, arrivando ad avere le seguenti categorie:
+Sono disponibili due versioni del dataset: una con etichette per segnale specifico e una, adottata in questo studio, con etichette per macrocategoria. In quest'ultima configurazione i segnali sono raggruppati in tre classi principali; tramite script è stata inoltre introdotta una quarta classe. Le classi finali sono quindi:
 
 \begin{itemize}
-    \item Divieto
+    \item Indicazione
     \item Pericolo
-    \item Obbligo    
+    \item Divieto
     \item Background (utile per un secondo scopo)
 \end{itemize}
