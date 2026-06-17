@@ -1,34 +1,42 @@
-# Riassunto del progetto
-Il README descrive un lavoro di confronto tra tre reti neurali (**AlexNet**, **MiniAlexNet**, **MiniAlexNetV2**) e un tuning degli iperparametri (learning rate e momentum), con analisi su accuratezza, loss e curve ROC.
+# Presentazione sintetica del progetto
+## 1) Obiettivo
+Confrontare tre modelli (**AlexNet**, **MiniAlexNet**, **MiniAlexNetV2**) e trovare la migliore combinazione di iperparametri (**Learning Rate**, **Momentum**) tramite analisi di accuratezza, loss e ROC.
 
-## Obiettivi operativi
-- Confrontare inizialmente i tre modelli con una configurazione comune (LR=0.001, momentum=0.6).
-- Eseguire il tuning completo di **MiniAlexNetV2** su più combinazioni di iperparametri.
-- Selezionare la combinazione migliore e fare un training esteso fino a **1200 epoche**.
-- Eventualmente riallenare gli altri modelli per un confronto finale “alla pari”.
+## 2) Piano di lavoro
+- Confronto iniziale con configurazione comune: **LR=0.001, momentum=0.6**.
+- Tuning completo su **MiniAlexNetV2**.
+- Selezione della combinazione migliore.
+- Addestramento esteso fino a **1200 epoche**.
 
-## Esito del confronto (200 epoche)
-- **AlexNet**: prestazioni molto basse, modello giudicato non adatto al dataset.
-- **MiniAlexNet**: leggero miglioramento rispetto ad AlexNet, ma ancora insufficiente.
-- **MiniAlexNetV2**: modello nettamente migliore, soprattutto con learning rate più alto.
+## 3) Risultati a 200 epoche
+- **AlexNet**: performance basse, apprendimento insufficiente.
+- **MiniAlexNet**: miglioramento lieve, ancora debole.
+- **MiniAlexNetV2**: modello nettamente migliore.
 
-Configurazione migliore a 200 epoche:
-- **MiniAlexNetV2, LR=0.003, momentum=0.6**
-- Accuratezza test ~0.95–1.00, loss bassa, ROC eccellente.
+### Migliore configurazione (200 epoche)
+- **MiniAlexNetV2 + LR=0.003 + momentum=0.6**
+- **Test accuracy ~0.95–1.00**
+- Loss ridotta e ROC eccellente.
 
-## Risultati estesi (1200 epoche)
+## 4) Estensione a 1200 epoche (best config)
 Con **MiniAlexNetV2 (LR=0.003, momentum=0.6)**:
-- Train e test accuracy arrivano a ~1.00.
-- Train e test loss scendono quasi a zero.
-- ROC media ~1.00.
-- Nessun segnale evidente di overfitting.
+- Train accuracy ~1.00
+- Test accuracy ~1.00
+- Train/Test loss ~0
+- AUC ROC media ~1.00
+- Nessun overfitting evidente
 
-Conclusione: il grosso del miglioramento avviene entro le prime 200 epoche; le epoche aggiuntive consolidano e rifiniscono il risultato.
+## 5) Messaggio chiave
+- Il miglioramento principale arriva entro le prime 200 epoche.
+- Le epoche aggiuntive consolidano il risultato e riducono ulteriormente la loss.
+- **MiniAlexNetV2 è la scelta migliore complessiva**.
 
-## Nota sul mondo reale (YOLO)
-Il README evidenzia che, anche con classificazione quasi perfetta, un detector come **YOLO** può fallire più spesso in scenari reali per:
-- qualità immagini, occlusioni, variazioni di scala/sfondo;
-- dataset e annotazioni non ottimali;
-- iperparametri e soglie di confidenza non ben tarati.
+## 6) Considerazioni per il mondo reale (YOLO)
+Anche con classificazione quasi perfetta, il detection può degradare per:
+- immagini rumorose/occluse;
+- dataset non abbastanza ampio o bilanciato;
+- annotazioni imperfette;
+- soglie di confidenza e iperparametri non ottimizzati.
 
-Indicazione pratica finale: per YOLO è consigliato aumentare il training (es. **500 epoche** invece di 200) e curare meglio dati/annotazioni/augmentation.
+## 7) Azione consigliata
+Per YOLO: aumentare il training (es. **500 epoche**), migliorare augmentation e qualità delle annotazioni.
