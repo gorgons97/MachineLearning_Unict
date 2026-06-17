@@ -24,7 +24,7 @@ cls_map = {
 
 def load_classifier(weights_path: str, num_classes: int = 43):
     model = Network.MiniAlexNetV2()
-    model.load_state_dict(torch.load(modelliDir / 'minialexnetV2_dataset-200.pth'))
+    model.load_state_dict(torch.load(modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth'))
     model.to(device)
     model.eval()
     return model, cls_transform
@@ -34,7 +34,7 @@ def detect_and_classify(
     img_name: str,
     img_path: str,
     det_weights: str = yoloWeights,
-    cls_weights: str = modelliDir / 'minialexnetV2_dataset-200.pth',
+    cls_weights: str = modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth',
     out_path: str = yoloResult,
     det_conf_th: float = 0.3
 ):
@@ -156,7 +156,7 @@ if __name__ == "__main__":
         img_name="test_strada.jpg",
         img_path="images",
         det_weights="runs/detect/train/weights/best.pt",
-        cls_weights= modelliDir / 'minialexnetV2_dataset-200.pth',
+        cls_weights= modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth',
         out_path= yoloResult,
         det_conf_th=0.3,
     )
