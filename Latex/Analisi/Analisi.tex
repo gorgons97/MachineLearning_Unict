@@ -84,56 +84,25 @@ La rete \textbf{MiniAlexNetV2} si distingue nettamente dalle altre due: le curve
 \subsection{Calibrazione del Learning Rate e del Momento}
 
 Una volta selezionata MiniAlexNetV2 come architettura di riferimento, sono state condotte analisi approfondite per ottimizzare i iperparametri. Sono state testate diverse combinazioni di learning rate (0.0001, 0.001, 0.003) e momento (0.3, 0.6, 0.9), per un totale di nove configurazioni, al fine di identificare la combinazione ottimale per massimizzare l'accuratezza e la stabilità della convergenza.
+Al fine di evitare un’eccessiva frammentazione dell’esposizione grafica e di rendere più agevole il confronto tra i risultati, si è ritenuto opportuno non riportare l’intero insieme dei nove grafici relativi alle diverse combinazioni di iperparametri. Si è scelto, invece, di presentare esclusivamente il grafico corrispondente alla configurazione di learning rate e momentum adottata anche nelle analisi comparative con le altre architetture di rete, nonché quello relativo alla rete che ha evidenziato le prestazioni complessivamente migliori, insieme ai rispettivi iperparametri ottimali.
+I grafici saranno comunque disponibili nel capitolo \textbf{Appendice} per una possibile consultazione
 
 \subsubsection{Analisi dell'Accuratezza}
 
 La Figura \ref{fig:AccGrid} presenta le curve di accuratezza per le diverse combinazioni di iperparametri.
 
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png}
-\end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png}
 \end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png}
-\end{minipage}
-\caption{Confronto delle curve di accuratezza per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+\caption{Confronto delle curve di accuratezza della MiniAlexNetV2}
 \label{fig:AccGrid}
 \end{figure}
 
@@ -152,51 +121,17 @@ Dall'analisi delle curve di accuratezza emergono diverse osservazioni significat
 La Figura \ref{fig:LossGrid} presenta le curve di loss per le diverse combinazioni di iperparametri, fornendo ulteriori informazioni sulla dinamica di apprendimento.
 
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png}
-\end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png}
 \end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png}
-\end{minipage}
-
-\caption{Confronto delle curve di loss per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+\caption{Confronto delle curve di loss per diverse della MiniAlexNetV2}
 \label{fig:LossGrid}
 \end{figure}
 
@@ -215,51 +150,17 @@ Dall'analisi delle curve di loss emergono considerazioni che corroborano quanto 
 Per valutare più approfonditamente la capacità discriminante delle diverse configurazioni, sono state analizzate le curve ROC per ciascuna combinazione di iperparametri.
 
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png}
-\end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
+\begin{minipage}[t]{0.50\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png}
 \end{minipage}
 
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png}
-\end{minipage}
-
-\caption{Confronto delle ROC curve per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+\caption{Confronto delle ROC curve per diverse combinazioni della MiniAlexNetV2}
 \label{fig:ROCGrid}
 \end{figure}
 
@@ -272,6 +173,21 @@ L'analisi delle curve ROC in Figura \ref{fig:ROCGrid} fornisce ulteriori element
 
 \item \textbf{Learning Rate 0.003}: Questa configurazione produce le migliori curve ROC. Con momento 0.3, le curve si discostano significativamente dalla diagonale, con TPR che supera 0.6 per FPR di 0.3. Con momento 0.6, si osservano le migliori prestazioni, con TPR che raggiunge 1.0 per FPR di circa 0.2 per la classe 2, e valori elevati per le altre classi, dimostrando una capacità discriminante molto buona. Con momento 0.9, le curve mostrano un comportamento anomalo con TPR che supera 1.0 per alti valori di FPR, probabilmente dovuto a instabilità nell'addestramento o a problemi nei dati, suggerendo che questo valore di momento non è ottimale.
 \end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{Configurazione Ottimale Identificata}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Parametro} & \textbf{Valore} \\
+\hline
+Learning Rate & 0.003 \\
+Momento & 0.6 \\
+Numero di epoche & 200 (con possibilità di estendere a 1200) \\
+\hline
+\end{tabular}
+\label{tab:configurazione}
+\end{table}
 
 \subsubsection{Analisi dell'Addestramento Prolungato}
 
@@ -302,8 +218,9 @@ Dall'analisi della Figura \ref{fig:LongTrain} emergono considerazioni importanti
 \item \textbf{Curve ROC}: Le curve ROC per l'addestramento prolungato mostrano una capacità discriminante molto elevata, con TPR che raggiunge 1.0 per tutte le classi già a FPR di 0.2-0.3, indicando un'ottima separazione delle classi. Le prestazioni sono bilanciate tra le tre classi, con lievi differenze a favore della classe 1.
 \end{itemize}
 
-\subsubsection{Sintesi dei Risultati e Configurazione Ottimale}
+In sintesi quello che si può dire è che l'allenamento a 1200 epoche è stato utile ma superfluo anche perchè si sarebbe potuto raggiungere il medesimo risultato per 400-500 epoche.
 
+\subsubsection{Sintesi dei Risultati e Configurazione Ottimale}
 Sulla base dell'analisi complessiva delle diverse combinazioni di iperparametri, è possibile trarre le seguenti conclusioni:
 
 \begin{itemize}

@@ -8,7 +8,7 @@ from torchvision import transforms
 
 import python_file.network as Network
 import python_file.dataclass as StreetSign
-from python_file.dirPath import modelliDir, yoloResult, yoloWeights
+from python_file.dirPath import modelliDir, yoloResult, yoloWeights, Test
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -148,6 +148,66 @@ def detect_and_classify(
     # 7) salva risultato
     cv2.imwrite(str(out_path), img_bgr)
     print(f"Risultato salvato in {out_path}")
+
+def draw_bounding_boxes(image_path, results):
+    # Load the image using OpenCV
+    img_bgr = cv2.imread(str(image_path))
+    
+    # Convert BGR to RGB for displaying with PIL
+    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+    
+    # Draw bounding boxes on the image
+    for box in results:
+        x1, y1, x2, y2, cls_name, conf_det = box
+
+        # etichetta da disegnare (poi puoi mappare cls_name a nome segnale)
+        label = f"{cls_name} det:{conf_det:.2f}"
+        
+        cv2.rectangle(img_bgr, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.4
+        text_thickness = 1
+
+        # colore testo e background del testo
+        text_color = (255, 255, 255)      # bianco
+        text_bg_color = (0, 0, 255)       # rosso pieno
+
+        # misura del testo
+        (text_w, text_h), baseline = cv2.getTextSize(label, font, font_scale, text_thickness)
+
+        # posizione testo
+        text_x = x1
+        text_y = max(text_h + 5, y1 - 10)
+
+        # rettangolo pieno dietro al testo
+        cv2.rectangle(
+            img_bgr,
+            (text_x, text_y - text_h - baseline - 4),
+            (text_x + text_w + 4, text_y + 4),
+            text_bg_color,
+            -1
+        )
+
+        # testo sopra il riquadro
+        cv2.putText(
+            img_bgr,
+            label,
+            (text_x + 2, text_y),
+            font,
+            font_scale,
+            text_color,
+            text_thickness,
+            cv2.LINE_AA
+        )
+    
+    # Save the processed image
+    output_path = Test / 'ciao.png'
+    cv2.imwrite(str(output_path), img_bgr)
+    
+    # Display the image using PIL
+    img_1 = Image.open(output_path)
+    return img_1
 
 
 if __name__ == "__main__":

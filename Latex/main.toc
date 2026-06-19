@@ -13,7 +13,7 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Analisi dell'Accuratezza}{12}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Analisi della Loss}{13}{subsubsection.3.3.2}%
 \contentsline {subsubsection}{\numberline {3.3.3}Curve ROC per le Diverse Configurazioni}{14}{subsubsection.3.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.4}Analisi dell'Addestramento Prolungato}{16}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.4}Analisi dell'Addestramento Prolungato}{15}{subsubsection.3.3.4}%
 \contentsline {subsubsection}{\numberline {3.3.5}Sintesi dei Risultati e Configurazione Ottimale}{16}{subsubsection.3.3.5}%
 \contentsline {section}{\numberline {4}Codice}{18}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Caso Reale}{19}{subsection.4.1}%
