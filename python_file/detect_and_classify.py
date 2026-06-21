@@ -13,6 +13,14 @@ from python_file.dirPath import modelliDir, yoloResult, yoloWeights, Test
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+input_height = 32
+input_width = 32
+
+preprocess = transforms.Compose([
+    transforms.Resize((input_height, input_width)),
+    transforms.ToTensor(), 
+])
+
 cls_transform = transforms.Compose([StreetSign.Rescale(32),StreetSign.RandomCrop(32),StreetSign.ToTensor()])
 
 # mappa id -> nome classe
@@ -22,7 +30,7 @@ cls_map = {
     2: "Pericolo"
 }
 
-def load_classifier(weights_path: str, num_classes: int = 43):
+def load_classifier(weights_path: str):
     model = Network.MiniAlexNetV2()
     model.load_state_dict(torch.load(modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth'))
     model.to(device)
@@ -31,11 +39,11 @@ def load_classifier(weights_path: str, num_classes: int = 43):
 
 
 def detect_and_classify(
-    img_name: str,
     img_path: str,
     det_weights: str = yoloWeights,
     cls_weights: str = modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth',
-    out_path: str = yoloResult,
+    save_img: bool = False,
+    out_path: str = yoloResult / "testYolo.png",
     det_conf_th: float = 0.3
 ):
     """
@@ -46,9 +54,6 @@ def detect_and_classify(
     out_path: dove salvare l'immagine annotata
     det_conf_th: soglia minima di confidenza per tenere una detection YOLO
     """
-
-    img_path = Path(img_path / img_name)
-    out_path = Path(out_path / img_name)
 
     # 1) carica modello YOLO
     det_model = YOLO(det_weights)  # modello di detection
@@ -145,16 +150,23 @@ def detect_and_classify(
             cv2.LINE_AA
         )
 
-    # 7) salva risultato
-    cv2.imwrite(str(out_path), img_bgr)
-    print(f"Risultato salvato in {out_path}")
+    if (save_img):
+        # 7) salva risultato
+        cv2.imwrite(str(out_path), img_bgr)
+        print(f"Risultato salvato in {out_path}")
 
-def draw_bounding_boxes(image_path, results):
-    # Load the image using OpenCV
-    img_bgr = cv2.imread(str(image_path))
-    
-    # Convert BGR to RGB for displaying with PIL
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+    img_pil = Image.fromarray(img_rgb)
+    return img_pil
+
+def draw_bounding_boxes(
+    img_path, 
+    results,
+    save_img: bool = False,
+    out_path: str = yoloResult / "testDiv.png"):
+    
+    # Load the image using OpenCV
+    img_bgr = cv2.imread(str(img_path))
     
     # Draw bounding boxes on the image
     for box in results:
@@ -200,23 +212,12 @@ def draw_bounding_boxes(image_path, results):
             text_thickness,
             cv2.LINE_AA
         )
-    
-    # Save the processed image
-    output_path = Test / 'ciao.png'
-    cv2.imwrite(str(output_path), img_bgr)
-    
-    # Display the image using PIL
-    img_1 = Image.open(output_path)
-    return img_1
+        
+    if (save_img):
+        #salva risultato
+        cv2.imwrite(str(out_path), img_bgr)
+        print(f"Risultato salvato in {out_path}")
 
-
-if __name__ == "__main__":
-    # esempio di uso:
-    detect_and_classify(
-        img_name="test_strada.jpg",
-        img_path="images",
-        det_weights="runs/detect/train/weights/best.pt",
-        cls_weights= modelliDir / 'MiniAlexNetV2_lr0.003_m0.6-1200.pth',
-        out_path= yoloResult,
-        det_conf_th=0.3,
-    )
+    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+    img_pil = Image.fromarray(img_rgb)
+    return img_pil
