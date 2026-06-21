@@ -4,7 +4,7 @@ In questa sezione viene descritto l'approccio adottato per risolvere il problema
 
 \subsection{Rete Utilizzata}
 
-In seguito a una fase preliminare di sperimentazione (discussa nel capitolo successivo), è stata selezionata una Convolutional Neural Network (CNN) ispirata ad AlexNet, denominata \textit{LeNetColor}. L'architettura è stata progressivamente migliorata mediante l'introduzione di \textit{Batch Normalization} e \textit{Dropout}, al fine di stabilizzare l'addestramento e ridurre il rischio di overfitting. Nel seguito, il modello finale viene indicato come \textbf{MiniAlexNetV2}. La Figura \ref{fig:reti} mostra la rete di partenza (\textit{LeNetColor}) e la sua prima evoluzione (\textit{MiniAlexNet}), mentre la Figura \ref{MiniAlexNetV2} riporta l'architettura finale selezionata.
+In seguito a una fase preliminare di sperimentazione (discussa nel capitolo successivo), è stata selezionata una Convolutional Neural Network (CNN) ispirata ad AlexNet, denominata \textit{AlexNet}. L'architettura è stata progressivamente migliorata mediante l'introduzione di \textit{Batch Normalization} e \textit{Dropout}, al fine di stabilizzare l'addestramento e ridurre il rischio di overfitting. Nel seguito, il modello finale viene indicato come \textbf{MiniAlexNetV2}. La Figura \ref{fig:reti} mostra la rete di partenza (\textit{AlexNet}) e la sua prima evoluzione (\textit{MiniAlexNet}), mentre la Figura \ref{MiniAlexNetV2} riporta l'architettura finale selezionata.
 
 \begin{figure}[htbp]
 \centering
@@ -17,7 +17,7 @@ In seguito a una fase preliminare di sperimentazione (discussa nel capitolo succ
     \includegraphics[width=\linewidth]{Metodo/MiniAlexNet_vertical.png}
 \end{minipage}\hfill
 
-\caption{Confronto tra LeNetColor e MiniAlexNet}
+\caption{Confronto tra AlexNet e MiniAlexNet}
 \label{fig:reti}
 \end{figure}
 
@@ -33,7 +33,7 @@ Per la configurazione di input sono state adottate scelte empiriche consolidate:
 \begin{equation}
     f(x) = \begin{cases}
                 0 & \text{se } x < 0 \\
-                x & \text{se } x > 0
+                x & \text{se } x \ge 0
            \end{cases}
 \label{1}
 \end{equation}
@@ -56,7 +56,7 @@ dove:
 
 La cross entropy loss consente di confrontare due distribuzioni di probabilità: quella predetta dal modello e quella target. Nel caso in esame, \textbf{MiniAlexNetV2} produce per ciascuna immagine una distribuzione di probabilità sulle classi, che viene confrontata con la distribuzione reale.
 
-In termini operativi, è stata inoltre considerata la seguente variante della funzione di loss:
+In termini operativi, è stata inoltre considerata la seguente variante della funzione di loss, valida per il caso binario:
 
 \begin{equation}
     \text{Cross Entropy Loss} = -\frac{1}{N}\sum_{i}^{N} \left( y_i \cdot \log(\hat{y}_i) + (1 - y_i) \cdot \log(1 - \hat{y}_i) \right)
@@ -65,9 +65,9 @@ In termini operativi, è stata inoltre considerata la seguente variante della fu
 
 dove:
 \begin{align*}
-    N & \text{ è il numero di classi,} \\
-    y_i & \text{ è la vera probabilità della classe } i, \\
-    \hat{y}_i & \text{ è la probabilità predetta della classe } i.
+    N & \text{ è il numero di campioni,} \\
+    y_i & \text{ è la vera etichetta della classe per il campione } i, \\
+    \hat{y}_i & \text{ è la probabilità predetta per il campione } i.
 \end{align*}
 
 \subsection{Valutazione}
@@ -98,9 +98,3 @@ L'accuratezza del modello è definita come rapporto tra il numero di previsioni 
 Tale parametro fornisce una misura sintetica della capacità di classificazione del modello.
 \newline 
 Accanto all'accuratezza è stata analizzata anche la curva ROC, che descrive l'andamento delle prestazioni al variare della soglia decisionale.
-
-
-
-
-
-
