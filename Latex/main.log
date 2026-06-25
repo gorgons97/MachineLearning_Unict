@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.12)  21 JUN 2026 20:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.12)  24 JUN 2026 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1069,14 +1069,7 @@ LaTeX Warning: Unused global option(s):
 
 (./main.aux (./introduzione/intro.aux) (./Metodo/Metodo.aux)
 (./Analisi/Analisi.aux) (./Codice/Codice.aux) (./Conclusione/Conclusione.aux)
-(./Appendice/Appendice.aux
-
-LaTeX Warning: Label `fig:Acc' multiply defined.
-
-
-LaTeX Warning: Label `fig:Loss' multiply defined.
-
-))
+(./Appendice/Appendice.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
@@ -1333,13 +1326,13 @@ t_Acc_lr0.001_m0.6_200.png> <./Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200
 .png> <./Analisi/image/AlexNet_Loss_lr0.001_m0.6_200.png> <./Analisi/image/Mini
 AlexNet_Loss_lr0.001_m0.6_200.png> <./Analisi/image/MiniAlexNetV2_Loss_lr0.001_
 m0.6_200.png>]
-<Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png, id=214, 722.7pt x 578.16pt>
+<Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png, id=212, 722.7pt x 578.16pt>
 File: Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png Graphic file (type png)
 <use Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png  used o
 n input line 65.
 (pdftex.def)             Requested size: 146.3817pt x 117.10323pt.
-<Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png, id=215, 722.7pt x 578.16pt
+<Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png, id=213, 722.7pt x 578.16pt
 >
 File: Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png Graphic file (type png
 )
@@ -1347,7 +1340,7 @@ File: Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png Graphic file (type png
 Package pdftex.def Info: Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png  us
 ed on input line 69.
 (pdftex.def)             Requested size: 146.3817pt x 117.10323pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png, id=216, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png, id=214, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png Graphic file (type p
 ng)
@@ -1364,7 +1357,7 @@ ng)
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png  
 used on input line 98.
 (pdftex.def)             Requested size: 221.78923pt x 133.07104pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png, id=227, 722.7pt x 433.62
+<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png, id=225, 722.7pt x 433.62
 pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png Graphic file (type p
 ng)
@@ -1379,7 +1372,7 @@ png)
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png 
  used on input line 127.
 (pdftex.def)             Requested size: 221.78923pt x 133.07104pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png, id=235, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png, id=233, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png Graphic file (type 
 png)
@@ -1393,7 +1386,7 @@ ng)
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png  
 used on input line 156.
 (pdftex.def)             Requested size: 221.78923pt x 177.42805pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png, id=236, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png, id=234, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png Graphic file (type p
 ng)
@@ -1402,7 +1395,7 @@ Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png
 used on input line 160.
 (pdftex.def)             Requested size: 221.78923pt x 177.42805pt.
  [13 <./Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png>]
-<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png, id=245, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png, id=243, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png Graphic file (type 
 png)
@@ -1410,7 +1403,7 @@ png)
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png 
  used on input line 200.
 (pdftex.def)             Requested size: 212.91577pt x 127.74475pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_1200.png, id=246, 722.7pt x 433.
+<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_1200.png, id=244, 722.7pt x 433.
 62pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_1200.png Graphic file (type
  png)
@@ -1421,7 +1414,7 @@ Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_1200.png
  [14 <./Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png>] [15 <./Analisi/i
 mage/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png> <./Analisi/image/MiniAlexNetV2_Lo
 ss_lr0.003_m0.6_1200.png>]
-<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png, id=262, 722.7pt x 578.1
+<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png, id=260, 722.7pt x 578.1
 6pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png Graphic file (type 
 png)
@@ -1437,37 +1430,37 @@ Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png
 
 
 ] [18]
-<Codice/test2.png, id=278, 1284.8pt x 722.7pt>
+<Codice/test2.png, id=276, 1284.8pt x 722.7pt>
 File: Codice/test2.png Graphic file (type png)
 <use Codice/test2.png>
 Package pdftex.def Info: Codice/test2.png  used on input line 49.
 (pdftex.def)             Requested size: 199.60895pt x 112.27097pt.
-<Codice/test2_std.png, id=279, 1284.8pt x 722.7pt>
+<Codice/test2_std.png, id=277, 1284.8pt x 722.7pt>
 File: Codice/test2_std.png Graphic file (type png)
 <use Codice/test2_std.png>
 Package pdftex.def Info: Codice/test2_std.png  used on input line 54.
 (pdftex.def)             Requested size: 199.60895pt x 112.27097pt.
-<Codice/test2_div.png, id=280, 1284.8pt x 722.7pt>
+<Codice/test2_div.png, id=278, 1284.8pt x 722.7pt>
 File: Codice/test2_div.png Graphic file (type png)
 <use Codice/test2_div.png>
 Package pdftex.def Info: Codice/test2_div.png  used on input line 60.
 (pdftex.def)             Requested size: 199.60895pt x 112.27097pt.
-<Codice/test2_yolo.png, id=281, 1284.8pt x 722.7pt>
+<Codice/test2_yolo.png, id=279, 1284.8pt x 722.7pt>
 File: Codice/test2_yolo.png Graphic file (type png)
 <use Codice/test2_yolo.png>
 Package pdftex.def Info: Codice/test2_yolo.png  used on input line 65.
 (pdftex.def)             Requested size: 199.60895pt x 112.27097pt.
-<Codice/test1.png, id=283, 645.41125pt x 440.64626pt>
+<Codice/test1.png, id=281, 645.41125pt x 440.64626pt>
 File: Codice/test1.png Graphic file (type png)
 <use Codice/test1.png>
 Package pdftex.def Info: Codice/test1.png  used on input line 78.
 (pdftex.def)             Requested size: 131.74263pt x 89.94308pt.
-<Codice/test_div1.png, id=284, 645.41125pt x 440.64626pt>
+<Codice/test_div1.png, id=282, 645.41125pt x 440.64626pt>
 File: Codice/test_div1.png Graphic file (type png)
 <use Codice/test_div1.png>
 Package pdftex.def Info: Codice/test_div1.png  used on input line 83.
 (pdftex.def)             Requested size: 131.74263pt x 89.94308pt.
-<Codice/test_yolo1.png, id=285, 645.41125pt x 440.64626pt>
+<Codice/test_yolo1.png, id=283, 645.41125pt x 440.64626pt>
 File: Codice/test_yolo1.png Graphic file (type png)
 <use Codice/test_yolo1.png>
 Package pdftex.def Info: Codice/test_yolo1.png  used on input line 88.
@@ -1496,263 +1489,263 @@ File: Analisi/image/MiniAlexNet_Acc_lr0.001_m0.6_200.png Graphic file (type png
 )
 <use Analisi/image/MiniAlexNet_Acc_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNet_Acc_lr0.001_m0.6_200.png  us
-ed on input line 14.
+ed on input line 13.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png  
-used on input line 21.
+used on input line 19.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
-<Analisi/image/Confronto_Acc.png, id=307, 722.7pt x 433.62pt>
+<Analisi/image/Confronto_Acc.png, id=305, 722.7pt x 433.62pt>
 File: Analisi/image/Confronto_Acc.png Graphic file (type png)
 <use Analisi/image/Confronto_Acc.png>
-Package pdftex.def Info: Analisi/image/Confronto_Acc.png  used on input line 28
+Package pdftex.def Info: Analisi/image/Confronto_Acc.png  used on input line 25
 .
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
 File: Analisi/image/AlexNet_Loss_lr0.001_m0.6_200.png Graphic file (type png)
 <use Analisi/image/AlexNet_Loss_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/AlexNet_Loss_lr0.001_m0.6_200.png  used 
-on input line 35.
+on input line 31.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
 File: Analisi/image/MiniAlexNet_Loss_lr0.001_m0.6_200.png Graphic file (type pn
 g)
 <use Analisi/image/MiniAlexNet_Loss_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNet_Loss_lr0.001_m0.6_200.png  u
-sed on input line 42.
+sed on input line 37.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png 
- used on input line 49.
+ used on input line 43.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
-<Analisi/image/Confronto_Loss.png, id=308, 722.7pt x 433.62pt>
+<Analisi/image/Confronto_Loss.png, id=306, 722.7pt x 433.62pt>
 File: Analisi/image/Confronto_Loss.png Graphic file (type png)
 <use Analisi/image/Confronto_Loss.png>
-Package pdftex.def Info: Analisi/image/Confronto_Loss.png  used on input line 5
-6.
+Package pdftex.def Info: Analisi/image/Confronto_Loss.png  used on input line 4
+9.
 (pdftex.def)             Requested size: 421.3982pt x 252.8363pt.
 File: Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png Graphic file (type png)
 <use Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png  used o
-n input line 63.
+n input line 55.
 (pdftex.def)             Requested size: 421.3982pt x 337.11507pt.
 File: Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png Graphic file (type png
 )
 <use Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png  us
-ed on input line 70.
+ed on input line 61.
 (pdftex.def)             Requested size: 421.3982pt x 337.11507pt.
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png  
-used on input line 77.
+used on input line 67.
 (pdftex.def)             Requested size: 421.3982pt x 337.11507pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png, id=309, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png, id=307, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png 
- used on input line 87.
+ used on input line 76.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png, id=310, 722.7pt x 433.62
+<Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png, id=308, 722.7pt x 433.62
 pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png  
-used on input line 91.
+used on input line 80.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png, id=311, 722.7pt x 433.62
+<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png, id=309, 722.7pt x 433.62
 pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png  
-used on input line 95.
+used on input line 84.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png, id=312, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png, id=310, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png 
- used on input line 102.
+ used on input line 91.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png  
-used on input line 106.
+used on input line 95.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png  
-used on input line 110.
+used on input line 99.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png, id=313, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png, id=311, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png 
- used on input line 117.
+ used on input line 106.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png, id=314, 722.7pt x 433.62
+<Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png, id=312, 722.7pt x 433.62
 pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png  
-used on input line 121.
+used on input line 110.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png, id=315, 722.7pt x 433.62
+<Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png, id=313, 722.7pt x 433.62
 pt>
 File: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png  
-used on input line 125.
+used on input line 114.
 (pdftex.def)             Requested size: 146.3817pt x 87.82741pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png, id=316, 722.7pt x 433.
+<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png, id=314, 722.7pt x 433.
 62pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png Graphic file (type
  png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png
-  used on input line 135.
+  used on input line 123.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png, id=317, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png, id=315, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png 
- used on input line 139.
+ used on input line 127.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png, id=318, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png, id=316, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png 
- used on input line 143.
+ used on input line 131.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png, id=319, 722.7pt x 433.
+<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png, id=317, 722.7pt x 433.
 62pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png Graphic file (type
  png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png
-  used on input line 150.
+  used on input line 138.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png 
- used on input line 154.
+ used on input line 142.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png 
- used on input line 158.
+ used on input line 146.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png, id=320, 722.7pt x 433.
+<Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png, id=318, 722.7pt x 433.
 62pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png Graphic file (type
  png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png
-  used on input line 165.
+  used on input line 153.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png, id=321, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png, id=319, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png 
- used on input line 169.
+ used on input line 157.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png, id=322, 722.7pt x 433.6
+<Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png, id=320, 722.7pt x 433.6
 2pt>
 File: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png 
- used on input line 173.
+ used on input line 161.
 (pdftex.def)             Requested size: 141.94835pt x 85.16759pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png, id=323, 722.7pt x 578.1
+<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png, id=321, 722.7pt x 578.1
 6pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png 
- used on input line 185.
+ used on input line 172.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png, id=324, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png, id=322, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png  
-used on input line 189.
+used on input line 176.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png, id=325, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png, id=323, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png  
-used on input line 193.
+used on input line 180.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png, id=326, 722.7pt x 578.1
+<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png, id=324, 722.7pt x 578.1
 6pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png 
- used on input line 200.
+ used on input line 187.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png  
-used on input line 204.
+used on input line 191.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png  
-used on input line 208.
+used on input line 195.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png, id=327, 722.7pt x 578.1
+<Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png, id=325, 722.7pt x 578.1
 6pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png Graphic file (type 
 png)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png 
- used on input line 215.
+ used on input line 202.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png, id=328, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png, id=326, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png  
-used on input line 219.
+used on input line 206.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
-<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png, id=329, 722.7pt x 578.16
+<Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png, id=327, 722.7pt x 578.16
 pt>
 File: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png Graphic file (type p
 ng)
 <use Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png>
 Package pdftex.def Info: Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png  
-used on input line 223.
+used on input line 210.
 (pdftex.def)             Requested size: 141.94835pt x 113.55678pt.
 )
 [22
@@ -1787,9 +1780,6 @@ L3 programming layer <2026-01-19>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B7DCAC71742EF15BD67F3B463D2B9EAF;3341.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -1797,10 +1787,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35249 strings out of 469504
- 679842 string characters out of 5470379
- 1613012 words of memory out of 5000000
- 63264 multiletter control sequences out of 15000+600000
+ 35237 strings out of 469504
+ 679570 string characters out of 5470379
+ 1612076 words of memory out of 5000000
+ 63252 multiletter control sequences out of 15000+600000
  635940 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,11n,94p,880b,1823s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1814,7 +1804,7 @@ ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pf
 b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (30 pages, 10261662 bytes).
+Output written on main.pdf (30 pages, 10261686 bytes).
 PDF statistics:
  480 PDF objects out of 1000 (max. 8388607)
  328 compressed objects within 4 object streams
