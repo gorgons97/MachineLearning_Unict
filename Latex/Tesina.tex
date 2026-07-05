@@ -1,5 +1,5 @@
 \documentclass[openany,italian,12pt]{article}
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{url}
@@ -12,7 +12,6 @@
 \usepackage[table]{xcolor}
 \usepackage{tikz}
 \usepackage{subcaption}
-\usepackage{booktabs}
 \usepackage[arrowdel]{physics}
 \usepackage{cancel}
 \usepackage{float}
@@ -33,13 +32,13 @@
 \thispagestyle{empty}
 \begin{center}
 \vspace*{2cm}
-\uppercase{\sc{ \Large{\textbf{Tesina: Riconoscimento dei Segnali Stradali con Reti Neurali Convoluzionali}}}} \\
+{\Large\textbf{\textsc{Tesina: Riconoscimento dei Segnali Stradali con Reti Neurali Convoluzionali}}} \\
 \vspace{1.5cm}
-\large{Marco Gorgone} \\
+{\large Marco Gorgone} \\
 \vspace{0.5cm}
-\sc{Anno Accademico 2025/2026} \\
+\textsc{Anno Accademico 2025/2026} \\
 \vspace{1cm}
-\sc{Dipartimento di Fisica -- Università degli Studi di Torino}
+\textsc{Dipartimento di Fisica -- Università degli Studi di Torino}
 \end{center}
 
 \newpage
@@ -49,22 +48,25 @@
 \newpage
 
 \section*{Abstract}
-Questo lavoro propone un modello di classificazione dei segnali stradali basato su una rete neurale convoluzionale (CNN) denominata \textbf{MiniAlexNetV2}. Il modello classifica i segnali in quattro macrocategorie: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto} e \textit{Background}. Partendo dall'architettura AlexNet, sono state introdotte \textit{Batch Normalization} e \textit{Dropout} per stabilizzare l'addestramento e ridurre l'overfitting. La configurazione ottimale (Learning Rate 0.003, Momento 0.6, 200 epoche) raggiunge un'accuratezza di test del 85-90\% con curve ROC che mostrano un'ottima capacità discriminante (TPR $\approx$ 1.0 per FPR $\approx$ 0.2). Il lavoro costituisce una base solida per sviluppi futuri verso il riconoscimento del singolo segnale.
+\addcontentsline{toc}{section}{Abstract}
+Questo lavoro propone un modello di classificazione dei segnali stradali basato su una rete neurale convoluzionale (CNN) denominata \textbf{MiniAlexNetV2}. Il modello classifica i segnali in quattro macrocategorie: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto} e \textit{Background}. Partendo dall'architettura AlexNet, sono state introdotte \textit{Batch Normalization} e \textit{Dropout} per stabilizzare l'addestramento e ridurre l'overfitting. La configurazione ottimale (Learning Rate 0.003, Momentum 0.6, 1200 epoche) raggiunge un'accuratezza dell'85-90\% con curve ROC che mostrano un'ottima capacità discriminante (TPR $\approx$ 1.0 per FPR $\approx$ 0.2). Il lavoro costituisce una base solida per sviluppi futuri verso il riconoscimento del singolo segnale.
 
 \section*{Problema}
-Il problema affrontato è il \textbf{riconoscimento automatico dei segnali stradali}, prerequisito essenziale per i sistemi di guida autonoma e assistenza alla guida (ADAS). In scenari reali i segnali appaiono in condizioni eterogenee (illuminazione variabile, occlusioni parziali, diverse condizioni meteorologiche) e appartengono a categorie eterogenee (limiti di velocità, divieti, obblighi, avvisi).
+\addcontentsline{toc}{section}{Problema}
+Il problema affrontato è il \textbf{riconoscimento automatico dei segnali stradali}, prerequisito essenziale per i sistemi di guida autonoma e assistenza alla guida (ADAS). In scenari reali i segnali appaiono in condizioni eterogenee (illuminazione variabile, occlusioni parziali, diverse condizioni meteorologiche) e appartengono a categorie diverse (limiti di velocità, divieti, obblighi, avvisi).
 
 L'obiettivo è sviluppare un classificatore basato su CNN in grado di:
 \begin{itemize}
-    \item Distinguere i segnali stradali dallo sfondo (classe \textit{Background});
-    \item Classificare correttamente i segnali rilevati in tre macrocategorie semantiche: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto};
+    \item Classificare correttamente i segnali rilevati in tre macrocategorie semantiche: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto}, \textit{Background};
     \item Raggiungere un'accuratezza sufficientemente elevata per un impiego affidabile in contesti reali;
     \item Bilanciare capacità di apprendimento e generalizzazione, contenendo l'overfitting.
+    \item \textbf{Nota sul Background}: La classe Background è stata inclusa non solo come classe di "riempimento", ma per simulare il comportamento del sistema in scenari reali dove il detector potrebbe estrarre regioni di immagine prive di segnali.
 \end{itemize}
 
-Il dataset utilizzato (sottoinsieme GTSRB, $\sim$450 MB, $\sim$50.000 immagini) è stato riorganizzato da 43 classi specifiche alle 4 macrocategorie sopra indicate.
+Il dataset utilizzato è scaricabile al link \url{https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign}.
 
-\section*{Metodo Utilizzato}
+\section*{Metodo}
+\addcontentsline{toc}{section}{Metodo}
 
 \subsection*{Architettura di Rete: MiniAlexNetV2}
 Partendo da \textbf{AlexNet}, sono state sviluppate due evoluzioni progressive:
@@ -73,6 +75,7 @@ Partendo da \textbf{AlexNet}, sono state sviluppate due evoluzioni progressive:
     \item \textbf{MiniAlexNetV2}: aggiunta di \textbf{Batch Normalization} (dopo ogni layer convoluzionale e fully-connected) e \textbf{Dropout} (p=0.5 nei layer fully-connected) per stabilizzare l'addestramento e regolarizzare il modello.
 \end{enumerate}
 L'architettura finale comprende: 5 layer convoluzionali con ReLU, MaxPooling (kernel 2, stride 1), 3 layer fully-connected, e classificazione finale a 4 classi con Softmax.
+Dopo vari test, è stata scelta la \textbf{MiniAlexNetV2}, poiché ha ottenuto i risultati migliori.
 
 \subsection*{Funzione di Loss e Ottimizzazione}
 \begin{itemize}
@@ -98,6 +101,7 @@ Addestramento a 200 epoche per ogni configurazione, con estensione a 1200 epoche
 \end{itemize}
 
 \section*{Risultati}
+\addcontentsline{toc}{section}{Risultati}
 
 \subsection*{Confronto Architetture (LR=0.001, Mom=0.6, 200 epoche)}
 \begin{itemize}
@@ -108,7 +112,7 @@ Addestramento a 200 epoche per ogni configurazione, con estensione a 1200 epoche
 
 \subsection*{Ottimizzazione Iperparametri su MiniAlexNetV2}
 \begin{itemize}
-    \item \textbf{LR 0.0001}: Fallimentare per tutti i momenti (Acc $\approx$ 0.1-0.2).
+    \item \textbf{LR 0.0001}: Fallimentare per tutti i valori di momentum (Acc $\approx$ 0.1-0.2).
     \item \textbf{LR 0.001}: Risultati intermedi; best a Mom 0.9 (Acc $\approx$ 0.7-0.8) ma con overfitting.
     \item \textbf{LR 0.003}: \textbf{Migliori risultati}; best a \textbf{Mom 0.6} (Train Acc $>$ 0.9, Test Acc $\approx$ 0.8, Loss train $\approx$ 0.5, test $\approx$ 0.8-1.0, ROC eccellenti).
 \end{itemize}
@@ -120,11 +124,30 @@ Addestramento a 200 epoche per ogni configurazione, con estensione a 1200 epoche
 \textbf{Parametro} & \textbf{Valore} \\ \hline
 Learning Rate & 0.003 \\
 Momentum & 0.6 \\
-Epoches & 200 (estendibile a 1200) \\
+Epoche & 200 (estendibile a 1200) \\
 Batch Size (train/val) & 1024 / 2048 \\
 Architettura & MiniAlexNetV2 \\ \hline
 \end{tabular}
 \end{center}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.28\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png}
+\end{minipage}
+
+\caption{Grafici della condizione migliore per la rete MiniAlexNetV2 (Learning Rate: 0.003, Momentum: 0.6, Epoche: 200)}
+\label{fig:MiniAlexNetV2_200}
+\end{figure}
 
 \subsection*{Addestramento Prolungato (1200 epoche, LR=0.003, Mom=0.6)}
 \begin{itemize}
@@ -135,24 +158,58 @@ Architettura & MiniAlexNetV2 \\ \hline
     \item Conclusione: 200 epoche sufficienti; 1200 epoche danno guadagno marginale.
 \end{itemize}
 
-\section*{Conclusione}
-Il lavoro dimostra che \textbf{MiniAlexNetV2} con LR=0.003, Momentum=0.6 risolve efficacemente la classificazione a 4 macrocategorie di segnali stradali (Test Acc 85-90\%, ROC eccellenti). L'overfitting residuo è gestibile e non peggiora con epoch addizionali.
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_1200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_1200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.28\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png}
+\end{minipage}
+
+\caption{Grafici della condizione migliore per la rete MiniAlexNetV2 (Learning Rate: 0.003, Momentum: 0.6, Epoche: 1200)}
+\label{fig:MiniAlexNetV2_1200}
+\end{figure}
+
+\subsection*{Test su Dati Reali}
+L'applicazione su immagini reali (dataset DITS) ha previsto due fasi distinte di sperimentazione. In una prima fase, si è adottato un approccio basato su \textit{sliding window}: l'immagine viene suddivisa in numerose sotto-immagini (patch) e ciascuna viene classificata indipendentemente dalla rete (Fig. \ref{fig:divisione}); è in questo contesto che la classe \textit{Background} risulta essenziale per discriminare le patch che non contengono segnali. In una seconda fase, si è passati a un pipeline \textit{detection + classification} più efficiente: YOLO (nella sua versione classica) localizza i candidati segnali e MiniAlexNetV2 ne classifica la macrocategoria (Fig. \ref{fig:yolo}). Entrambi gli approcci funzionano come proof-of-concept, ma evidenziano limiti su scene complesse (occlusioni, illuminazione variabile, sfondi disordinati); in particolare il detector YOLO classico fatica a generalizzare e il classificatore risente del domain gap. Servono un detector più robusto (es. YOLOv8/v11) e dati di addestramento più variabili.
+
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=0.9\linewidth]{Codice/test_div1.png}
+\caption{Riconoscimento dei segnali tramite la divisione in sottoimmagini}
+\label{fig:divisione}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=0.9\linewidth]{Codice/test_yolo1.png}
+\caption{Riconoscimento dei segnali tramite l'uso di Yolo + Classificazione}
+\label{fig:yolo}
+\end{figure}
+
+\section*{Conclusioni}
+\addcontentsline{toc}{section}{Conclusioni}
+Il lavoro dimostra che \textbf{MiniAlexNetV2} con LR=0.003, Momentum=0.6 risolve efficacemente la classificazione a 4 macrocategorie di segnali stradali (Test Acc 85-90\%, ROC eccellenti). L'overfitting residuo è gestibile e non peggiora con epoche addizionali. La sperimentazione su dati reali ha validato due strategie complementari: un approccio \textit{sliding-window} (che richiede esplicitamente la classe \textit{Background}) e un pipeline \textit{detection + classification} basato su YOLO. Entrambi confermano la solidità del classificatore, pur evidenziando la necessità di detector più avanzati e di un dataset più ampio e vario per colmare il domain gap verso scenari operativi reali.
 
 \subsection*{Sviluppi Futuri}
 \begin{enumerate}
-    \item \textbf{Aumento e diversificazione del dataset}: Più immagini, condizioni meteo/illuminazione variate, data augmentation avanzata (CutMix, MixUp, Albumentations) per migliorare generalizzazione.
-    \item \textbf{Architetture alternative}: Sperimentare ResNet, EfficientNet, MobileNetV3, Vision Transformers (ViT) per confrontare parametri/accuratezza/latency.
-    \item \textbf{Regolarizzazione avanzata}: Label Smoothing, Weight Decay più aggressivo, Stochastic Depth, MixUp per ridurre ulteriormente l'overfitting.
-    \item \textbf{Ottimizzazione iperparametri estesa}: Learning rate scheduling (Cosine Annealing, OneCycleLR), Bayesian Optimization / Optuna per LR, Momentum, Weight Decay, Batch Size.
-    \item \textbf{Quantizzazione e Deployment}: Post-training quantization (INT8), TensorRT/ONNX Runtime per inferenza real-time su edge device (Jetson, Raspberry Pi).
-    \item \textbf{Analisi interpretabilità}: Grad-CAM, feature visualization, attention maps per capire cosa impara la rete per classe.
+    \item \textbf{Aumento e diversificazione del dataset}: Maggior numero di immagini, condizioni meteo/illuminazione variate, data augmentation avanzata (CutMix, MixUp, Albumentations) per migliorare la generalizzazione.
+    \item \textbf{Architetture alternative}: Sperimentare ResNet, EfficientNet, MobileNetV3, Vision Transformers (ViT) per confrontare parametri/accuratezza/latenza.
     \item \textbf{Evoluzione del task}: Passaggio da \textbf{classificazione a 4 macrocategorie} a \textbf{classificazione fine-grained (43+ classi GTSRB)} e \textbf{object detection end-to-end} (YOLOv8/v11, RT-DETR) per detection + classification in un solo stadio.
-    \item \textbf{Test su dati reali estesi}: Validazione su dataset reali completi (es. Mapillary Traffic Sign, BDD100K, dataset proprietari automotive) per misurare il domain gap.
 \end{enumerate}
 
 In sintesi, il lavoro costituisce una \textbf{baseline solida e riproducibile} per il riconoscimento dei segnali stradali, con un'architettura leggera, ben regolarizzata e iperparametri validati sperimentalmente, pronta per essere estesa verso scenari più complessi e deployment reale.
 
-\end{document}
-
 \section*{Appendice}
-Per vedere un'analisi più dettagliata del lavoro analizzando anche i lavori fatti di analisi sulle altre reti e su una spiegazione maggiore del lavoro compiuto guardare il file 
+\addcontentsline{toc}{section}{Appendice}
+Per un'analisi più dettagliata del lavoro, inclusi i grafici di accuratezza, loss e ROC per tutte le configurazioni testate, si rimanda al file \texttt{main.pdf} e ai capitoli \textit{Analisi}, \textit{Metodo} e \textit{Appendice} del progetto completo.
+Il progetto completo è presente al link \url{https://github.com/gorgons97/Reti_Neurali_per_Segnali_detection} mentre il file \texttt{main.pdf} disponibile al link \url{https://github.com/gorgons97/Reti_Neurali_per_Segnali_detection/blob/main/Latex/main.pdf} è una versione più estesa e dettagliata di quello che è stato fatto in questo progetto, in cui sono anche stati trattati meglio la parte di test per le reti \textbf{AlexNet} e \textbf{MiniAlexNet}, e vi si trovano anche tutti i grafici necessari di ogni singolo caso di test sugli iperparametri.
+
+\end{document}
