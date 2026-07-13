@@ -57,7 +57,7 @@ Il problema affrontato è il \textbf{riconoscimento automatico dei segnali strad
 
 L'obiettivo è sviluppare un classificatore basato su CNN in grado di:
 \begin{itemize}
-    \item Classificare correttamente i segnali rilevati in tre macrocategorie semantiche: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto}, \textit{Background};
+    \item Classificare correttamente i segnali rilevati in quattro macrocategorie semantiche: \textit{Indicazione}, \textit{Pericolo}, \textit{Divieto}, \textit{Background};
     \item Raggiungere un'accuratezza sufficientemente elevata per un impiego affidabile in contesti reali;
     \item Bilanciare capacità di apprendimento e generalizzazione, contenendo l'overfitting.
     \item \textbf{Nota sul Background}: La classe Background è stata inclusa non solo come classe di "riempimento", ma per simulare il comportamento del sistema in scenari reali dove il detector potrebbe estrarre regioni di immagine prive di segnali.
@@ -100,21 +100,32 @@ Addestramento a 200 epoche per ogni configurazione, con estensione a 1200 epoche
     \item \textbf{Gap Train-Test}: Indicatore di overfitting.
 \end{itemize}
 
+\subsection*{Trasformazioni Applicate}
+Le trasformazioni applicate ai dati di input consistono in una pipeline di tre passaggi sequenziali, definita nel file \texttt{python\_file/dataclass.py}. In particolare:
+
+\begin{itemize}
+    \item \textbf{Rescale(32)}: L'immagine viene ridimensionata in modo che il lato minore sia pari a 32 pixel, mantenendo inalterato l'aspect ratio originale. Ad esempio, un'immagine 64$\times$128 diventa 32$\times$64, mentre una 100$\times$50 diventa 64$\times$32. Questo garantisce uniformità nella scala delle immagini in ingresso alla rete.
+    \item \textbf{RandomCrop(32)}: Dall'immagine ridimensionata, che mantiene forma rettangolare, viene estratto un crop casuale di dimensione 32$\times$32 pixel. Poiché il lato minore è già a 32 pixel dopo il Rescale, il crop viene applicato casualmente lungo la dimensione maggiore, introducendo variabilità spaziale nel dataset.
+    \item \textbf{ToTensor()}: L'immagine viene convertita da array NumPy nel formato H$\times$W$\times$C a tensore PyTorch nel formato C$\times$H$\times$W. I valori dei pixel rimangono nell'intervallo [0,255] (non vengono normalizzati a [0,1]); la normalizzazione avviene implicitamente attraverso i layer di Batch Normalization presenti nella rete.
+\end{itemize}
+
+Questa pipeline di preprocessing agisce come forma di data augmentation spaziale (tramite il RandomCrop) e permette di ottenere input di dimensione uniforme 32$\times$32 per la rete neurale.
+
 \section*{Risultati}
 \addcontentsline{toc}{section}{Risultati}
 
 \subsection*{Confronto Architetture (LR=0.001, Mom=0.6, 200 epoche)}
 \begin{itemize}
-    \item \textbf{AlexNet}: Acc $\approx$ 0.3-0.4, Loss elevata (1.5-4.5), ROC $\approx$ caso casuale $\rightarrow$ scarsa generalizzazione.
-    \item \textbf{MiniAlexNet}: Acc $\approx$ 0.48-0.56, Loss stabili, ROC $\approx$ caso casuale $\rightarrow$ buona generalizzazione ma capacità limitata.
-    \item \textbf{MiniAlexNetV2}: Acc $\approx$ 0.6-0.8, Loss 0.5-1.0, ROC nettamente sopra la diagonale $\rightarrow$ \textbf{miglior compromesso capacità/generalizzazione}.
+    \item \textbf{AlexNet}: Acc $\approx$ 0.45-0.55, Loss elevata (1.5-4.5) e non decresce adeguatamente, ROC troppo vicina alla diagonale $\rightarrow$  Il modello non apprende pattern utili e generalizza molto male, probabilmente a causa dell'architettura troppo profonda per il dataset disponibile.
+    \item \textbf{MiniAlexNet}: Acc $\approx$ 0.48-0.56, Loss in calo ma stabile su valori intermedi ($\approx$1.0-1.5), ROC troppo vicina alla diagonale $\rightarrow$ Il modello mostra una leggera capacità predittiva, ma l'accuratezza vicino al caso casuale e la ROC quasi diagonale indicano che la capacità di discriminazione è ancora limitata (architettura probabilmente insufficiente).
+    \item \textbf{MiniAlexNetV2}: Acc $\approx$ 0.6-0.9, Loss in discesa valore per il test $\approx$ 1.75 (rischio di overfitting ma resta comunque il caso migliore in generale), ROC nettamente sopra la diagonale $\rightarrow$ \textbf{miglior compromesso capacità/generalizzazione}.
 \end{itemize}
 
 \subsection*{Ottimizzazione Iperparametri su MiniAlexNetV2}
 \begin{itemize}
-    \item \textbf{LR 0.0001}: Fallimentare per tutti i valori di momentum (Acc $\approx$ 0.1-0.2).
-    \item \textbf{LR 0.001}: Risultati intermedi; best a Mom 0.9 (Acc $\approx$ 0.7-0.8) ma con overfitting.
-    \item \textbf{LR 0.003}: \textbf{Migliori risultati}; best a \textbf{Mom 0.6} (Train Acc $>$ 0.9, Test Acc $\approx$ 0.8, Loss train $\approx$ 0.5, test $\approx$ 0.8-1.0, ROC eccellenti).
+    \item \textbf{LR 0.0001}: Fallimentare per tutti i valori di momentum (Acc $\approx$ 0.1-0.4).
+    \item \textbf{LR 0.001}: Risultati intermedi; best a Mom 0.9 (Acc $\approx$ 0.7) ma con overfitting.
+    \item \textbf{LR 0.003}: \textbf{Migliori risultati}; best a \textbf{Mom 0.6} (Train Acc $>$ 0.9, Test Acc $\approx$ 0.8, Loss train $\approx$ 0.0, test $\approx$ 1.7, ROC eccellenti).
 \end{itemize}
 
 \subsection*{Configurazione Ottimale Selezionata}
@@ -151,8 +162,8 @@ Architettura & MiniAlexNetV2 \\ \hline
 
 \subsection*{Addestramento Prolungato (1200 epoche, LR=0.003, Mom=0.6)}
 \begin{itemize}
-    \item Train Acc $\to$ 1.0 già a $\sim$400 epoche; Test Acc si stabilizza a \textbf{0.85-0.90}.
-    \item Train Loss $\to$ 0.0; Test Loss $\to$ 0.5-1.0 (leggero aumento tardivo).
+    \item Train Acc $\to$ 1.0 già a $\sim$400 epoche; Test Acc si stabilizza a \textbf{0.7}.
+    \item Train Loss $\to$ 0.0; Test Loss $\to$ 2.5.
     \item Curve ROC: TPR = 1.0 per FPR $\approx$ 0.2-0.3 su tutte e 3 le classi principali $\rightarrow$ \textbf{eccellente separazione}.
     \item Gap train-test costante $\rightarrow$ overfitting presente ma non peggiorante nel tempo.
     \item Conclusione: 200 epoche sufficienti; 1200 epoche danno guadagno marginale.

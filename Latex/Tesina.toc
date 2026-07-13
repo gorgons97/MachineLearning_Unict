@@ -3,6 +3,6 @@
 \contentsline {section}{Abstract}{3}{section*.2}%
 \contentsline {section}{Problema}{3}{section*.3}%
 \contentsline {section}{Metodo}{3}{section*.4}%
-\contentsline {section}{Risultati}{4}{section*.9}%
-\contentsline {section}{Conclusioni}{6}{section*.19}%
-\contentsline {section}{Appendice}{7}{section*.21}%
+\contentsline {section}{Risultati}{5}{section*.10}%
+\contentsline {section}{Conclusioni}{6}{section*.20}%
+\contentsline {section}{Appendice}{8}{section*.22}%

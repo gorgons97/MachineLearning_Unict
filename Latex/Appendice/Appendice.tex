@@ -68,147 +68,171 @@ Il presente capitolo include le figure relative alle curve di accuratezza, loss 
     \caption{Curve ROC della rete MiniAlexNetV2.}
 \end{figure}
 
+\newpage
 
+\subsection{Grafici per la ricerca degli iperparametri}
+La rete MiniAlexNetV2 è stata allenata per 200 
+% --- Sezione Accuracy ---
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png}
-\end{minipage}
-
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png}
-\end{minipage}
-
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.33\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png}
-\end{minipage}
-\caption{Confronto delle curve di accuratezza per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.3_200.png}
+    \caption{Accuracy: lr=0.0001, m=0.3}
 \end{figure}
 
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png}
-\end{minipage}
-
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png}
-\end{minipage}
-
-\vspace{0.5cm}
-
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png}
-\end{minipage}
-
-\caption{Confronto delle curve di loss per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.3_200.png}
+    \caption{Accuracy: lr=0.001, m=0.3}
 \end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.3_200.png}
+    \caption{Accuracy: lr=0.003, m=0.3}
+\end{figure}
 
 \begin{figure}[htbp]
-\centering
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png}
-\end{minipage}
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.6_200.png}
+    \caption{Accuracy: lr=0.0001, m=0.6}
+\end{figure}
 
-\vspace{0.5cm}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.6_200.png}
+    \caption{Accuracy: lr=0.001, m=0.6}
+\end{figure}
 
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png}
-\end{minipage}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.6_200.png}
+    \caption{Accuracy: lr=0.003, m=0.6}
+\end{figure}
 
-\vspace{0.5cm}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.0001_m0.9_200.png}
+    \caption{Accuracy: lr=0.0001, m=0.9}
+\end{figure}
 
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png}
-\end{minipage}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.001_m0.9_200.png}
+    \caption{Accuracy: lr=0.001, m=0.9}
+\end{figure}
 
-\caption{Confronto delle ROC curve per diverse combinazioni di Learning Rate e Momento su MiniAlexNetV2}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Acc_lr0.003_m0.9_200.png}
+    \caption{Accuracy: lr=0.003, m=0.9}
+\end{figure}
+
+% --- Sezione Loss ---
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.3_200.png}
+    \caption{Loss: lr=0.0001, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.3_200.png}
+    \caption{Loss: lr=0.001, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.3_200.png}
+    \caption{Loss: lr=0.003, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.6_200.png}
+    \caption{Loss: lr=0.0001, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.6_200.png}
+    \caption{Loss: lr=0.001, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.6_200.png}
+    \caption{Loss: lr=0.003, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.0001_m0.9_200.png}
+    \caption{Loss: lr=0.0001, m=0.9}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.001_m0.9_200.png}
+    \caption{Loss: lr=0.001, m=0.9}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_Loss_lr0.003_m0.9_200.png}
+    \caption{Loss: lr=0.003, m=0.9}
+\end{figure}
+
+% --- Sezione ROC ---
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.3_200.png}
+    \caption{ROC: lr=0.0001, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.3_200.png}
+    \caption{ROC: lr=0.001, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.3_200.png}
+    \caption{ROC: lr=0.003, m=0.3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.6_200.png}
+    \caption{ROC: lr=0.0001, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png}
+    \caption{ROC: lr=0.001, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_200.png}
+    \caption{ROC: lr=0.003, m=0.6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.0001_m0.9_200.png}
+    \caption{ROC: lr=0.0001, m=0.9}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.9_200.png}
+    \caption{ROC: lr=0.001, m=0.9}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.9_200.png}
+    \caption{ROC: lr=0.003, m=0.9}
 \end{figure}
