@@ -115,17 +115,63 @@ Questa pipeline di preprocessing agisce come forma di data augmentation spaziale
 \addcontentsline{toc}{section}{Risultati}
 
 \subsection*{Confronto Architetture (LR=0.001, Mom=0.6, 200 epoche)}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.50\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/Confronto_Acc.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.50\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/Confronto_Loss.png}
+\end{minipage}
+
+\caption{Grafici LOSS e ACC delle 3 reti neurali a confronto (Learning Rate: 0.001, Momentum: 0.6, Epoche: 200)}
+\label{fig:LossAcc}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|ccc|}
+\hline
+                        & \textbf{AlexNet} & \textbf{MiniAlexNet} & \textbf{MiniAlexNetV2} \\ \hline
+\textbf{Loss Train}     & 1.29 & 1.32 & 0.18 \\
+\textbf{Loss Test}      & 1.21 & 1.29 & 1.82 \\
+\textbf{Accuracy Train} & 0.47 & 0.47 & 0.96 \\
+\textbf{Accuracy Test}  & 0.57 & 0.57 & 0.62 \\\hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/AlexNet_ROC_lr0.001_m0.6_200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNet_ROC_lr0.001_m0.6_200.png}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.001_m0.6_200.png}
+\end{minipage}
+
+\caption{Grafici per confronto curve ROC delle 3 reti neurali (Learning Rate: 0.001, Momentum: 0.6, Epoche: 200)}
+\label{fig:ROC}
+\end{figure}
+
 \begin{itemize}
-    \item \textbf{AlexNet}: Acc $\approx$ 0.45-0.55, Loss elevata (1.5-4.5) e non decresce adeguatamente, ROC troppo vicina alla diagonale $\rightarrow$  Il modello non apprende pattern utili e generalizza molto male, probabilmente a causa dell'architettura troppo profonda per il dataset disponibile.
-    \item \textbf{MiniAlexNet}: Acc $\approx$ 0.48-0.56, Loss in calo ma stabile su valori intermedi ($\approx$1.0-1.5), ROC troppo vicina alla diagonale $\rightarrow$ Il modello mostra una leggera capacità predittiva, ma l'accuratezza vicino al caso casuale e la ROC quasi diagonale indicano che la capacità di discriminazione è ancora limitata (architettura probabilmente insufficiente).
-    \item \textbf{MiniAlexNetV2}: Acc $\approx$ 0.6-0.9, Loss in discesa valore per il test $\approx$ 1.75 (rischio di overfitting ma resta comunque il caso migliore in generale), ROC nettamente sopra la diagonale $\rightarrow$ \textbf{miglior compromesso capacità/generalizzazione}.
+    \item \textbf{AlexNet}: Il modello non apprende pattern utili e generalizza molto male, probabilmente a causa dell'architettura troppo profonda per il dataset disponibile.
+    \item \textbf{MiniAlexNet}: Il modello mostra una leggera capacità predittiva, ma l'accuratezza vicino al caso casuale e la ROC quasi diagonale indicano che la capacità di discriminazione è ancora limitata (architettura probabilmente insufficiente).
+    \item \textbf{MiniAlexNetV2}: nonostante la la curva di  \textbf{miglior compromesso capacità/generalizzazione}.
 \end{itemize}
 
 \subsection*{Ottimizzazione Iperparametri su MiniAlexNetV2}
 \begin{itemize}
-    \item \textbf{LR 0.0001}: Fallimentare per tutti i valori di momentum (Acc $\approx$ 0.1-0.4).
+    \item \textbf{LR 0.0001}: Fallimentare per tutti i valori di momentum (Acc $\approx$ 0.1-0.5).
     \item \textbf{LR 0.001}: Risultati intermedi; best a Mom 0.9 (Acc $\approx$ 0.7) ma con overfitting.
-    \item \textbf{LR 0.003}: \textbf{Migliori risultati}; best a \textbf{Mom 0.6} (Train Acc $>$ 0.9, Test Acc $\approx$ 0.8, Loss train $\approx$ 0.0, test $\approx$ 1.7, ROC eccellenti).
+    \item \textbf{LR 0.003}: \textbf{Migliori risultati}; best a \textbf{Mom 0.6} (Train Acc $>$ 0.9, Test Acc $\approx$ 0.73, Loss train $\approx$ 0.03, test $\approx$ 1.7, ROC eccellenti).
 \end{itemize}
 
 \subsection*{Configurazione Ottimale Selezionata}
@@ -162,11 +208,11 @@ Architettura & MiniAlexNetV2 \\ \hline
 
 \subsection*{Addestramento Prolungato (1200 epoche, LR=0.003, Mom=0.6)}
 \begin{itemize}
-    \item Train Acc $\to$ 1.0 già a $\sim$400 epoche; Test Acc si stabilizza a \textbf{0.7}.
-    \item Train Loss $\to$ 0.0; Test Loss $\to$ 2.5.
+    \item Train Acc $\to$ 1.0 già a $\sim$400 epoche; Test Acc si stabilizza a \textbf{0.71}.
+    \item Train Loss $\to$ $\approx$ 0.0; Test Loss $\to$ 2.62 (Si nota che il sistema in se ha memorizzato il dataset non migliorando, difatti la funzione costo per il test aumenta).
     \item Curve ROC: TPR = 1.0 per FPR $\approx$ 0.2-0.3 su tutte e 3 le classi principali $\rightarrow$ \textbf{eccellente separazione}.
-    \item Gap train-test costante $\rightarrow$ overfitting presente ma non peggiorante nel tempo.
-    \item Conclusione: 200 epoche sufficienti; 1200 epoche danno guadagno marginale.
+    \item Gap train-test costante $\rightarrow$ overfitting presente e peggiorante nel tempo.
+    \item Conclusione: 200 epoche sufficienti; 1200 epoche non danno un guadagno.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -184,7 +230,7 @@ Architettura & MiniAlexNetV2 \\ \hline
     \includegraphics[width=\linewidth]{Analisi/image/MiniAlexNetV2_ROC_lr0.003_m0.6_1200.png}
 \end{minipage}
 
-\caption{Grafici della condizione migliore per la rete MiniAlexNetV2 (Learning Rate: 0.003, Momentum: 0.6, Epoche: 1200)}
+\caption{Grafici dell'addestramento prolungato per la rete MiniAlexNetV2 (Learning Rate: 0.003, Momentum: 0.6, Epoche: 1200)}
 \label{fig:MiniAlexNetV2_1200}
 \end{figure}
 
